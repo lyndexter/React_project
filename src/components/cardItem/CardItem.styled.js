@@ -8,13 +8,14 @@ export const Footer = styled.div`
   margin: 10px 27px;
   padding: 10px;
   height: 345px;
+  width: 272px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 `;
 
 export const CardStyled = styled(Card)`
-  width: 683px;
+  width: 680px;
   height: 400px;
   display: flex;
 `;
@@ -32,6 +33,7 @@ export const ButtonStyled = styled(Button)`
   width: 74%;
   height: 36px;
   margin: 0 auto;
+  margin-left: 30px;
 `;
 
 export const CardImage = styled.img`
@@ -52,7 +54,28 @@ export const TextStyled = styled.p`
   font-size: 12.41pt;
   color: #020243;
   text-align: center;
-  letter-spacing: 8px;
+  letter-spacing: 5px;
   margin-top: 36%;
-  margin-bottom: 19px;
+  margin-bottom: 0px;
+`;
+
+export const MoreInfo = styled.div`
+  top: 20px;
+  left: 360px;
+  width: 262px;
+  overflow: hidden;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  margin-top: 30px;
+  height: ${(props) => (props.height ? "322px" : "0px")};
+  max-width: 290px;
+  transition: 0.3s;
+`;
+
+export const ButtonLessStyled = styled(ButtonStyled)`
+  margin-bottom: 20px;
 `;

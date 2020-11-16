@@ -1,14 +1,17 @@
 import styled from "styled-components";
-import BebasNeue from "../fonts/BebasNeue-Regular.otf";
 
 export const MenuStyled = styled.ul`
-  display: inline-flex;
-  justify-content: space-around;
+  position: relative;
+  display: flex;
+  justify-content: space-evenly;
   align-items: center;
-  font-family: ${BebasNeue};
+  font-family: "BebasNeue-Regular";
   color: #313943;
-  width: 597px;
-  height: 52px;
+  width: 1297px;
+  height: 100px;
+  margin: 0 auto;
+  padding-right: 300px;
+  padding-left: 300px;
 `;
 
 export const MenuItem = styled.li`
@@ -24,18 +27,12 @@ export const MenuItem = styled.li`
 `;
 
 export const LogoImage = styled.img`
+  position: absolute;
+  left: 50px;
+  top: 0px;
   display: inline;
-  margin-top: 10px;
   width: 100px;
-  margin-right: 150px;
+  z-index: 3;
 `;
 
-export const ContainerStyled = styled.section`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-  width: 1366px;
-  color: #fff;
-  background-color: #fff;
-`;
+export const ContainerStyled = styled.section``;

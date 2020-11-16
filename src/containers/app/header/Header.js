@@ -19,17 +19,29 @@ const Header = () => {
   return (
     <StyledHeader>
       <ListStyled>
-        <FontAwesomeIcon icon={faFacebookF} />
-        <FontAwesomeIcon icon={faTwitter} />
-        <FontAwesomeIcon icon={faGoogle} />
-        <FontAwesomeIcon icon={faPinterest} />
+        <a href="https://www.facebook.com/">
+          <FontAwesomeIcon icon={faFacebookF} />
+        </a>
+        <a href="https://twitter.com/?lang=uk">
+          <FontAwesomeIcon icon={faTwitter} />
+        </a>
+        <a href="https://www.google.com/">
+          <FontAwesomeIcon icon={faGoogle} />
+        </a>
+        <a href="https://www.pinterest.com/">
+          <FontAwesomeIcon icon={faPinterest} />
+        </a>
       </ListStyled>
       <TelephoNumber>Give us a call : +6666666666</TelephoNumber>
 
       <AuthorizationStyled>
-        <AuthorisationText>LOGIN</AuthorisationText>
+        <AuthorisationText>
+          <a href="#">LOGIN</a>
+        </AuthorisationText>
         <AuthorisationDelimater />
-        <AuthorisationText>REGISTER</AuthorisationText>
+        <AuthorisationText>
+          <a href="#">REGISTER</a>
+        </AuthorisationText>
       </AuthorizationStyled>
     </StyledHeader>
   );

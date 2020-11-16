@@ -8,7 +8,7 @@ export const ImageStyled = styled.img`
 
 export const HeadingContainer = styled.div`
   position: relative;
-  height: 556px;
+  height: 630px;
   width: 1360px;
   margin: 0 auto;
   background-size: cover;
@@ -22,7 +22,7 @@ export const FunctionalMenu = styled.div`
   width: 1360px;
 
   background: rgba(248, 199, 45, 0.8);
-  opacity: 90%;
+  opacity: 95%;
 `;
 
 export const Header = styled.div`

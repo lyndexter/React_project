@@ -3,7 +3,7 @@ import CardItem from "../../../components/cardItem/CardItem";
 import cardImage1 from "../../../images/card_image1.jpg";
 import cardImage2 from "../../../images/card_image2.jpg";
 import {
-  ContainerStyled,
+  ContainerCards,
   TitleStyled,
   ButtonStyled,
   CatalogContainer,
@@ -30,7 +30,7 @@ const Catalog = () => {
   return (
     <CatalogContainer>
       <TitleStyled>• Features Cars •</TitleStyled>
-      <ContainerStyled>
+      <ContainerCards>
         {data.map(({ title, description, image, price }, id) => (
           <CardItem
             title={title}
@@ -39,7 +39,7 @@ const Catalog = () => {
             imageSrc={image}
           ></CardItem>
         ))}
-      </ContainerStyled>
+      </ContainerCards>
       <ButtonStyled>Show More</ButtonStyled>
     </CatalogContainer>
   );

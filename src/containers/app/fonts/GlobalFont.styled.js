@@ -9,10 +9,13 @@ import Reboto_Light from "./Roboto-Light.ttf";
 
 export default createGlobalStyle`
 @font-face{
-    font-family: 'BebasNeue-Regular';
-        src: local('BebasNeue-Regular'), local('FontName'),
-        url(${BebasNeue_Regular}) format('otf'),
-        url(${OpenSans_Bold}) format('truetype');
+    font-family: 'OpenSas';
+        src: local('OpenSas'), local('FontName'),
+        url(${OpenSans_Light}) format('truetype'),
+        url(${OpenSans_Bold}) format('truetype'),
+        url(${OpenSans_Regular}) format('truetype'),
+        url(${OpenSans_Semibold}) format('truetype'),
+        url(${Reboto_Light}) format('truetype');
         font-weight: 300;
         font-style: normal;
 }

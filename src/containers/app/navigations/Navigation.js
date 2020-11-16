@@ -1,4 +1,7 @@
 import React from "react";
+import Heading from "./../heading/Heading";
+import Catalog from "./../catalog/Catalog";
+import CatalogNews from "./../catalog/SecondCatalog";
 import {
   MenuStyled,
   MenuItem,
@@ -17,9 +20,9 @@ const Navigation = () => {
   return (
     <ContainerStyled>
       <Router>
-        <LogoImage src={logo} />
-
         <MenuStyled>
+          <LogoImage src={logo} />
+
           <MenuItem>
             <NavLink
               exact
@@ -50,17 +53,20 @@ const Navigation = () => {
               CART
             </NavLink>
           </MenuItem>
-
-          <Switch>
-            <Route path="/category">
-              <div>It's category and now there is nothing</div>
-            </Route>
-            <Route path="/card">
-              <div>It's card and now there is nothing</div>
-            </Route>
-            <Route path="/"></Route>
-          </Switch>
         </MenuStyled>
+        <Switch>
+          <Route path="/category">
+            <div>It's category and now there is nothing</div>
+          </Route>
+          <Route path="/card">
+            <div>It's card and now there is nothing</div>
+          </Route>
+          <Route path="/">
+            <Heading />
+            <Catalog />
+            <CatalogNews />
+          </Route>
+        </Switch>
       </Router>
     </ContainerStyled>
   );

@@ -23,7 +23,7 @@ export const ContactContainer = styled.ul`
   margin: 0 auto;
 `;
 
-export const ContactText = styled.ul`
+export const ContactText = styled.li`
   font-family: "OpenSans Regular";
   font-size: 17px;
   letter-spacing: 4px;
@@ -31,6 +31,9 @@ export const ContactText = styled.ul`
   text-transform: uppercase;
   list-style: none;
   padding: 0px;
+  a {
+    color: #191919;
+  }
 `;
 
 export const HorizontLine = styled.hr`
@@ -47,7 +50,9 @@ export const ListStyled = styled.div`
   margin: 0 auto;
   padding-top: 20px;
   font-size: 20px;
-  color: #c59e47;
+  a {
+    color: #c59e47;
+  }
 `;
 
 export const BrandStuff = styled.p`

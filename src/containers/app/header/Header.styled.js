@@ -19,6 +19,9 @@ export const ListStyled = styled.div`
   font-size: 14px;
   margin: 0px;
   margin-left: 152px;
+  a {
+    color: white;
+  }
 `;
 
 export const TelephoNumber = styled.div`
@@ -45,8 +48,10 @@ export const AuthorizationStyled = styled.ul`
 export const AuthorisationText = styled.li`
   text-decoration: none;
   font-family: "BebasNeue Regular";
-  color: #e7e7e7;
   padding-right: 6px;
+  a {
+    color: #e7e7e7;
+  }
 `;
 
 export const AuthorisationDelimater = styled.div`

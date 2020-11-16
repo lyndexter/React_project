@@ -2,17 +2,18 @@ import styled from "styled-components";
 import { Button } from "antd";
 
 export const CatalogContainer = styled.section`
-  width: 1360px;
+  max-width: 1360px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
-export const ContainerStyled = styled.section`
+export const ContainerCards = styled.section`
   background-color: white;
   padding-top: 40px;
   display: flex;
+  flex-wrap: wrap;
 `;
 
 export const TitleStyled = styled.h1`
@@ -40,4 +41,8 @@ export const ButtonStyled = styled(Button)`
 
   margin-top: 86px;
   margin-bottom: 100px;
+  :hover {
+    border: 1px solid #020243;
+    color: #020243;
+  }
 `;

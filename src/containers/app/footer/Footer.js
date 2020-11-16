@@ -25,11 +25,22 @@ const Footer = () => {
     <StyledFooter>
       <LogoStyled src={logo} />
       <ContactContainer>
-        <ContactText>about us</ContactText>
-        <ContactText>categoties</ContactText>
-        <ContactText>Preorder</ContactText>
-        <ContactText>contact us</ContactText>
-        <ContactText>recieve our news</ContactText>
+        <ContactText>
+          {" "}
+          <a href="#">about us</a>
+        </ContactText>
+        <ContactText>
+          <a href="#">categoties</a>
+        </ContactText>
+        <ContactText>
+          <a href="#">Preorder</a>
+        </ContactText>
+        <ContactText>
+          <a href="#">contact us</a>
+        </ContactText>
+        <ContactText>
+          <a href="#">recieve our news</a>
+        </ContactText>
       </ContactContainer>
       <BrandStuff>
         "Lorem ipsum dolor sit amet, consectetur, sed do eiusmod tempor
@@ -39,10 +50,18 @@ const Footer = () => {
       </BrandStuff>
       <HorizontLine />
       <ListStyled>
-        <FontAwesomeIcon icon={faFacebookF} />
-        <FontAwesomeIcon icon={faTwitter} />
-        <FontAwesomeIcon icon={faGoogle} />
-        <FontAwesomeIcon icon={faPinterest} />
+        <a href="https://www.facebook.com/">
+          <FontAwesomeIcon icon={faFacebookF} />
+        </a>
+        <a href="https://twitter.com/?lang=uk">
+          <FontAwesomeIcon icon={faTwitter} />
+        </a>
+        <a href="https://www.google.com/">
+          <FontAwesomeIcon icon={faGoogle} />
+        </a>
+        <a href="https://www.pinterest.com/">
+          <FontAwesomeIcon icon={faPinterest} />
+        </a>
       </ListStyled>
 
       <BottomPanel>
