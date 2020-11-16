@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import BebasNeue from "../fonts/BebasNeue-Regular.ttf";
+import myFontURL from "../fonts/BebasNeue-Regular.ttf";
 
 export const StyledHeader = styled.section`
   margin: 0 auto;
@@ -18,13 +18,13 @@ export const ListStyled = styled.div`
   width: 91px;
   font-size: 14px;
   margin: 0px;
-  padding-left: 11.2%;
+  margin-left: 152px;
 `;
 
 export const TelephoNumber = styled.div`
   display: inline-block;
   letter-spacing: 1px;
-  font-family: ${BebasNeue};
+  font-family: "BebasNeue Regular";
   font-size: 12.7px;
   color: #e7e7e7;
   margin-bottom: 0px;

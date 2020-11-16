@@ -1,23 +1,26 @@
 import React from "react";
-import { Card, Button } from "antd";
-import {} from "./CardItem.styled";
-
-const { Meta } = Card;
+import { Card } from "antd";
+import {
+  Footer,
+  CardStyled,
+  ButtonStyled,
+  CardImage,
+  MetaStyled,
+  TextStyled,
+} from "./CardItem.styled";
+import "antd/dist/antd.css";
 
 const CardItem = ({ title, description, imageSrc, price }) => {
   return (
-    <Card
-      hoverable
-      style={{ width: "350px", borderRadius: "20px" }}
-      cover={
-        <img style={{ borderRadius: "20px" }} alt="Toy Car" src={imageSrc} />
-      }
-    >
-      <Meta title={title} description={description}>
-        <p>${price}</p>
-        <Button>Read More</Button>
-      </Meta>
-    </Card>
+    <div>
+      <CardStyled hoverable cover={<CardImage alt="Toy Car" src={imageSrc} />}>
+        <Footer>
+          <MetaStyled title={title} description={description} />
+          <TextStyled>Price: ${price}UAH</TextStyled>
+          <ButtonStyled>Read More</ButtonStyled>
+        </Footer>
+      </CardStyled>
+    </div>
   );
 };
 

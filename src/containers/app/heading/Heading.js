@@ -7,7 +7,7 @@ import {
   InputsStyled,
   Input,
 } from "./Heading.styled";
-import photo1 from "../../../icons/heading_photo1.jpg";
+import photo1 from "../../../images/heading_photo1.jpg";
 
 const Heading = () => {
   return (

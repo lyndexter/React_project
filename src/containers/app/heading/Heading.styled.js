@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import OpenSans from "../fonts/OpenSans-SemiBold.ttf";
+import OpenSans from "../fonts/OpenSans-Semibold.ttf";
 
 export const ImageStyled = styled.img`
   display: block;
@@ -7,17 +7,20 @@ export const ImageStyled = styled.img`
 `;
 
 export const HeadingContainer = styled.div`
-  height: 660px;
+  position: relative;
+  height: 556px;
   width: 1360px;
   margin: 0 auto;
+  background-size: cover;
+  overflow: hidden;
 `;
 
 export const FunctionalMenu = styled.div`
   position: absolute;
   bottom: 0px;
   height: 150px;
-  width: 1366px;
-  padding-bottom: 26px;
+  width: 1360px;
+
   background: rgba(248, 199, 45, 0.8);
   opacity: 90%;
 `;
@@ -45,6 +48,7 @@ export const InputsStyled = styled.div`
 export const Input = styled.input`
   font-family: ${OpenSans};
   font-size: 16pt;
+  color: white;
   margin-right: 50px;
   height: 30px;
   width: 250px;

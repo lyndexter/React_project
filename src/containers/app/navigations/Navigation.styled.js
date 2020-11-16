@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import BebasNeue from "../fonts/BebasNeue-Regular.ttf";
+import BebasNeue from "../fonts/BebasNeue-Regular.otf";
 
 export const MenuStyled = styled.ul`
   display: inline-flex;
