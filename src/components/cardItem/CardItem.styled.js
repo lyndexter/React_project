@@ -73,7 +73,7 @@ export const MoreInfo = styled.div`
   margin-top: 30px;
   height: ${(props) => (props.height ? "322px" : "0px")};
   max-width: 290px;
-  transition: 0.3s;
+  transition: 0.6s;
 `;
 
 export const ButtonLessStyled = styled(ButtonStyled)`

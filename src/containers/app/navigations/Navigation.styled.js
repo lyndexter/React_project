@@ -17,21 +17,25 @@ export const MenuStyled = styled.ul`
 export const MenuItem = styled.li`
   font-size: 17px;
   color: #313943;
-  padding-top: 5px;
-  padding-bottom: 6px;
-  margin-bottom: 22px;
+  padding-top: 15px;
+  padding-bottom: 0px;
+  margin-bottom: 12px;
   padding-left: 10px;
   margin-left: 34px;
   border-bottom: 2px solid rgba(0, 0, 0, 0);
   list-style: none;
+  :hover {
+    color: #333;
+    text-shadow: #595959 4px 0 10px;
+  }
 `;
 
 export const LogoImage = styled.img`
   position: absolute;
-  left: 50px;
-  top: 0px;
+  left: 10px;
+  top: -10px;
   display: inline;
-  width: 100px;
+  width: 150px;
   z-index: 3;
 `;
 

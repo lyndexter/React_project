@@ -8,7 +8,7 @@ import {
   LogoImage,
   ContainerStyled,
 } from "./Navigation.styled";
-import logo from "../../../images/collectionlogo1.png";
+import logo from "../../../images/logo.png";
 import {
   BrowserRouter as Router,
   Switch,

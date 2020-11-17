@@ -8,9 +8,9 @@ export const StyledFooter = styled.div`
 
 export const LogoStyled = styled.img`
   display: block;
-  width: 150px;
-  height: 150px;
-  margin: 150px auto 50px auto;
+  width: 180px;
+  height: 180px;
+  margin: 50px auto -40px auto;
 `;
 
 export const ContactContainer = styled.ul`
@@ -33,12 +33,17 @@ export const ContactText = styled.li`
   padding: 0px;
   a {
     color: #191919;
+    :hover {
+      color: #333;
+      text-shadow: #595959 4px 0 10px;
+    }
   }
 `;
 
-export const HorizontLine = styled.hr`
+export const HorizontLine = styled.div`
   margin-top: 30px;
-  border: 1px solid black;
+  height: 2px;
+  background-color: black;
 `;
 
 export const ListStyled = styled.div`

@@ -11,14 +11,17 @@ import {
 } from "./CardItem.styled";
 import "antd/dist/antd.css";
 
-const CardItem = ({ title, description, imageSrc, price }) => {
+const CardItem = ({ toyCar }) => {
   return (
     <div>
-      <CardStyled hoverable cover={<CardImage alt="Toy Car" src={imageSrc} />}>
+      <CardStyled
+        hoverable
+        cover={<CardImage alt="Toy Car" src={toyCar.image} />}
+      >
         <Footer>
-          <MetaStyled title={title} description={description} />
-          <TextStyled>Price: ${price}UAH</TextStyled>
-          <Info title={title} description={description} />
+          <MetaStyled title={toyCar.title} description={toyCar.description} />
+          <TextStyled>Price: ${toyCar.priceInUAH}UAH</TextStyled>
+          <Info toyCar={toyCar} />
         </Footer>
       </CardStyled>
     </div>
@@ -32,8 +35,14 @@ class Info extends React.Component {
     super(props);
     this.state = {
       visible: false,
-      title: props.title,
-      description: props.description,
+      title: props.toyCar.title,
+      description: `${props.toyCar.description} This car is made 
+      of ${props.toyCar.material}.
+      This toy is from ${props.toyCar.size} category and his 
+      length is ${props.toyCar.lengthInMM} mm.
+      Car has ${props.toyCar.doorCount} doors, and his potential age group 
+      is ${props.toyCar.ageGroup} years old.
+      And price af this great toy is only ${props.toyCar.priceInUAH} UAH`,
     };
   }
   showDrawer = () => {
