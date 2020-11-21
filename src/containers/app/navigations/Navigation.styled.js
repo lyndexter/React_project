@@ -24,19 +24,26 @@ export const MenuItem = styled.li`
   margin-left: 34px;
   border-bottom: 2px solid rgba(0, 0, 0, 0);
   list-style: none;
+  a {
+    text-transform: uppercase;
+  }
   :hover {
     color: #333;
     text-shadow: #595959 4px 0 10px;
+  }
+  .selected {
+    text-shadow: none;
   }
 `;
 
 export const LogoImage = styled.img`
   position: absolute;
-  left: 10px;
-  top: -10px;
+  left: -10px;
+  top: 0px;
   display: inline;
-  width: 150px;
+  width: 100px;
   z-index: 3;
+  /* background-color: black; */
 `;
 
 export const ContainerStyled = styled.section``;

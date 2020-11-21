@@ -26,7 +26,7 @@ export const InfoHeader = styled.div`
   text-align: center;
   border-bottom: 2px solid #f6f6fb;
   margin: 0 auto;
-  margin-top: 50px;
+  margin-top: 30px;
   padding-bottom: 12px;
 `;
 

@@ -1,10 +1,5 @@
 import styled from "styled-components";
-import OpenSans from "../fonts/OpenSans-Semibold.ttf";
-
-export const ImageStyled = styled.img`
-  display: block;
-  max-width: 1366px;
-`;
+import OpenSans from "../../fonts/OpenSans-Semibold.ttf";
 
 export const HeadingContainer = styled.div`
   position: relative;
@@ -37,7 +32,7 @@ export const Header = styled.div`
   max-width: 1349px;
 `;
 
-export const InputsStyled = styled.div`
+export const DescriptionStyled = styled.div`
   display: flex;
   justify-content: start;
   align-items: center;
@@ -45,13 +40,12 @@ export const InputsStyled = styled.div`
   margin-left: 25px;
 `;
 
-export const Input = styled.input`
+export const TextStyled = styled.p`
   font-family: ${OpenSans};
   font-size: 16pt;
   color: white;
   margin-right: 50px;
   height: 30px;
-  width: 250px;
+  width: 850px;
   background: transparent;
-  border: solid 2px #fff;
 `;

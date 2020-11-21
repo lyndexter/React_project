@@ -30,7 +30,7 @@ export const ButtonStyled = styled(Button)`
   line-height: inherit;
   color: #fff;
   letter-spacing: 5px;
-  width: 74%;
+  width: 78%;
   height: 36px;
   margin: 0 auto;
   margin-left: 30px;
@@ -77,5 +77,5 @@ export const MoreInfo = styled.div`
 `;
 
 export const ButtonLessStyled = styled(ButtonStyled)`
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 `;

@@ -57,6 +57,9 @@ export const ListStyled = styled.div`
   font-size: 20px;
   a {
     color: #c59e47;
+    :hover {
+      color: black;
+    }
   }
 `;
 

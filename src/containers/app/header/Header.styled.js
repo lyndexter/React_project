@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import myFontURL from "../fonts/BebasNeue-Regular.ttf";
 
 export const StyledHeader = styled.section`
@@ -21,13 +21,16 @@ export const ListStyled = styled.div`
   margin-left: 152px;
   a {
     color: white;
+    :hover {
+      color: #c59e47;
+    }
   }
 `;
 
 export const TelephoNumber = styled.div`
   display: inline-block;
   letter-spacing: 1px;
-  font-family: "BebasNeue Regular";
+  font-family: "BebasNeue Regular", cursive;
   font-size: 12.7px;
   color: #e7e7e7;
   margin-bottom: 0px;
@@ -51,6 +54,9 @@ export const AuthorisationText = styled.li`
   padding-right: 6px;
   a {
     color: #e7e7e7;
+    :hover {
+      color: #c59e47;
+    }
   }
 `;
 

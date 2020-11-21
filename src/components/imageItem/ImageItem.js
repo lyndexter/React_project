@@ -13,10 +13,17 @@ import {
 import { Image } from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { Redirect } from "react-router-dom";
 
 const ImageItem = (props) => {
   const [isShown, setIsShown] = useState(-1);
+  const [redirect, setRedirect] = useState(false);
   let toyCar = props.toyCar;
+
+  const goToItem = () => {
+    setRedirect(true);
+  };
+
   return (
     <ImageCard>
       <Image
@@ -43,7 +50,8 @@ const ImageItem = (props) => {
               potential age group is {toyCar.ageGroup} years old.
             </InfoDescription>
             <InfoPrice>{toyCar.priceInUAH} UAH</InfoPrice>
-            <ButtonStyled>Read More</ButtonStyled>
+            <ButtonStyled onClick={goToItem}>Open In Page</ButtonStyled>
+            {redirect && <Redirect to="/card" />}
           </MainInfo>
           <InfoFooter>
             <FontAwesomeIcon icon={faStar} />

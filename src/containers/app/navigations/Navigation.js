@@ -1,14 +1,13 @@
 import React from "react";
-import Heading from "./../heading/Heading";
-import Catalog from "./../catalog/Catalog";
-import CatalogNews from "./../catalog/SecondCatalog";
+import Home from "../Home/Home";
+import Catalog from "../catalog/Catalog";
 import {
   MenuStyled,
   MenuItem,
   LogoImage,
   ContainerStyled,
 } from "./Navigation.styled";
-import logo from "../../../images/logo.png";
+import logo from "../../../images/logo.svg";
 import {
   BrowserRouter as Router,
   Switch,
@@ -40,7 +39,7 @@ const Navigation = () => {
               activeClassName="selected"
               style={{ textDecoration: "none", color: "#313943" }}
             >
-              CATEGORIES
+              catalog
             </NavLink>
           </MenuItem>
           <MenuItem>
@@ -56,15 +55,13 @@ const Navigation = () => {
         </MenuStyled>
         <Switch>
           <Route path="/category">
-            <div>It's category and now there is nothing</div>
+            <Catalog />
           </Route>
           <Route path="/card">
             <div>It's card and now there is nothing</div>
           </Route>
           <Route path="/">
-            <Heading />
-            <Catalog />
-            <CatalogNews />
+            <Home />
           </Route>
         </Switch>
       </Router>

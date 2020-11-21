@@ -9,7 +9,7 @@ import {
   MoreInfo,
   ButtonLessStyled,
 } from "./CardItem.styled";
-import "antd/dist/antd.css";
+import { Redirect } from "react-router-dom";
 
 const CardItem = ({ toyCar }) => {
   return (
@@ -34,6 +34,7 @@ class Info extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      redirect: false,
       visible: false,
       title: props.toyCar.title,
       description: `${props.toyCar.description} This car is made 
@@ -57,6 +58,10 @@ class Info extends React.Component {
     });
   };
 
+  goToItem = () => {
+    this.setState({ redirect: true });
+  };
+
   render() {
     return (
       <div>
@@ -66,7 +71,9 @@ class Info extends React.Component {
             title={this.state.title}
             description={this.state.description}
           />
+          <ButtonStyled onClick={this.goToItem}>Open In Page</ButtonStyled>
           <ButtonLessStyled onClick={this.onClose}>Show Less</ButtonLessStyled>
+          {this.state.redirect && <Redirect to="/card" />}
         </MoreInfo>
       </div>
     );

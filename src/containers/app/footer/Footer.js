@@ -18,7 +18,7 @@ import {
   TextDesigned,
   BrandStuff,
 } from "./Footer.styles";
-import logo from "../../../images/logo.png";
+import logo from "../../../images/logo.svg";
 
 const Footer = () => {
   return (

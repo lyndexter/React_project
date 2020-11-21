@@ -3,21 +3,12 @@ import {
   SortingPanel,
   SortingText,
   ContainerImages,
-  InfoContainer,
-  InfoHeader,
-  ImageCard,
-  InfoDescription,
-  ButtonStyled,
-  InfoPrice,
-  MainInfo,
-  TitleInfo,
-  InfoFooter,
 } from "./SecondCalalog.styled";
 import { TitleStyled, CatalogContainer } from "./Catalog.styled";
 
 import { Flipper, Flipped } from "react-flip-toolkit";
 import { data } from "./Source";
-import ImageItem from "../../../components/imageItem/ImageItem";
+import ImageItem from "../../../../components/imageItem/ImageItem";
 
 const CatalogNews = () => {
   const [toys, setToys] = useState([...data]);
