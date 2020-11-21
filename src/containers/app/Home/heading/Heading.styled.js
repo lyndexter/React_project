@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import OpenSans from "../../fonts/OpenSans-Semibold.ttf";
 
 export const HeadingContainer = styled.div`
   position: relative;
@@ -22,7 +21,7 @@ export const FunctionalMenu = styled.div`
 
 export const Header = styled.div`
   display: block;
-  font-family: ${OpenSans};
+  font-family: "OpenSans-Light";
   font-size: 22pt;
   color: rgb(255, 255, 255);
   margin-top: 14px;
@@ -41,7 +40,7 @@ export const DescriptionStyled = styled.div`
 `;
 
 export const TextStyled = styled.p`
-  font-family: ${OpenSans};
+  font-family: "OpenSans-Light";
   font-size: 16pt;
   color: white;
   margin-right: 50px;

@@ -6,20 +6,7 @@ export const ViewComponent = styled.section`
   margin: 0 auto;
 `;
 
-export const EntityContainer = styled.div`
-  margin: 0 auto;
-  margin-top: 30px;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  justify-content: center;
-`;
-
-export const AutoCompleteStyled = styled(AutoComplete)`
-  /* margin-left: auto;
-  margin-right: 0; */
-  /* margin: auto 0 auto auto; */
-`;
+export const AutoCompleteStyled = styled(AutoComplete)``;
 
 export const MenuStyled = styled(Menu)`
   display: flex;
