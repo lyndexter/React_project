@@ -1,7 +1,4 @@
-let constsortType = "default";
-let constfilterPrice = "all";
-let constfilterMaterial = "all";
-let constfilterDoor = "all";
+let data = [];
 
 export const comparator = (a, b, standard) => {
   switch (standard) {
@@ -24,22 +21,21 @@ export const comparator = (a, b, standard) => {
   }
 };
 
-export const sortBy = (inputList) => {
-  let standard = constsortType;
-  if (standard === "default") {
+export const sortBy = (inputList, sortType) => {
+  if (sortType === "all") {
     return [...data];
   }
-  let result = inputList.sort((a, b) => comparator(a, b, standard));
+  let result = inputList.sort((a, b) => comparator(a, b, sortType));
   return result;
 };
 
-export const filterByPrice = (inputList) => {
-  if (constfilterPrice === "all") {
+export const filterByPrice = (inputList, filterPrice) => {
+  if (filterPrice === "all") {
     return inputList;
   }
   let result = [];
 
-  switch (constfilterPrice) {
+  switch (filterPrice) {
     case "priceLess100":
       result = inputList.filter((a) => a.priceInUAH < 100);
       break;
@@ -57,30 +53,28 @@ export const filterByPrice = (inputList) => {
   return result;
 };
 
-export const filterByDoor = (inputList) => {
-  if (constfilterDoor === "all") {
+export const filterByDoor = (inputList, filterDoor) => {
+  if (filterDoor === "all") {
     return inputList;
   }
-  if (constfilterDoor === "doorsMore") {
+  if (filterDoor === "doorsMore") {
     let result = inputList.filter(
       (a) => a.doorCount != "2" && a.doorCount != "4"
     );
     return result;
   }
 
-  let result = inputList.filter(
-    (a) => a.doorCount == constfilterDoor.substr(5)
-  );
+  let result = inputList.filter((a) => a.doorCount == filterDoor.substr(5));
 
   return result;
 };
 
-export const filterByMaterial = (inputList) => {
-  if (constfilterMaterial === "all") {
+export const filterByMaterial = (inputList, filterMaterial) => {
+  if (filterMaterial === "all") {
     return inputList;
   }
   let result = [];
-  if (constfilterMaterial === "materialOthers") {
+  if (filterMaterial === "materialOthers") {
     result = inputList.filter(
       (a) =>
         a.material !== "metal" &&
@@ -89,117 +83,18 @@ export const filterByMaterial = (inputList) => {
     );
   } else {
     result = inputList.filter(
-      (a) => a.material === constfilterMaterial.toLowerCase().substr(8)
+      (a) => a.material === filterMaterial.toLowerCase().substr(8)
     );
   }
   return result;
 };
 
-export const diFilters = () => {
+export const executeFilters = (props, sourceList) => {
+  data = sourceList;
   let inputList = [...data];
-  inputList = sortBy(inputList);
-  console.log("start show", inputList);
-  inputList = filterByMaterial(inputList);
-  console.log("test1", inputList);
-  inputList = filterByDoor(inputList);
-  console.log("test2", inputList);
-  inputList = filterByPrice(inputList);
-  setToys(inputList);
-  console.log("end show", inputList);
-};
-
-export const handleInput = (e) => {
-  console.log("click", e);
-
-  let sample = e;
-  let resultList = [];
-  sourcedate.forEach((item) => {
-    switch (true) {
-      case item.priceInUAH.toString().includes(sample):
-        resultList.push(item);
-        break;
-      case item.ageGroup.toString().includes(sample):
-        resultList.push(item);
-        break;
-      case item.color.includes(sample):
-        resultList.push(item);
-        break;
-      case item.size.includes(sample):
-        resultList.push(item);
-        break;
-      case item.doorCount.toString().includes(sample):
-        resultList.push(item);
-        break;
-      case item.lengthInMM.toString().includes(sample):
-        resultList.push(item);
-        break;
-      case item.material.includes(sample):
-        resultList.push(item);
-        break;
-      case item.title.includes(sample):
-        resultList.push(item);
-        break;
-    }
-  });
-  data = resultList;
-  if (sample == "") {
-    data = sourcedate;
-  }
-  console.log(data);
-  diFilters();
-};
-
-export const handleClick = (e) => {
-  console.log("click ", e);
-
-  switch (e.item.props.subMenuKey) {
-    case "view-menu-":
-      if (e.key === "image") {
-        setCurrentView("image");
-      } else {
-        setCurrentView("card");
-      }
-      break;
-    case "sort-menu-":
-      setSortType(e.key);
-      constsortType = e.key;
-      break;
-    case "filterPrice-menu-":
-      setFilterPrice(e.key);
-      constfilterPrice = e.key;
-      break;
-    case "filterMaterial-menu-":
-      setFilterMaterial(e.key);
-      constfilterMaterial = e.key;
-      break;
-    case "filterDoor-menu-":
-      setFilterDoor(e.key);
-      constfilterDoor = e.key;
-      break;
-  }
-  diFilters();
-  console.log("click ", e);
-};
-
-export const resetDefault = (e) => {
-  console.log("click", e);
-  switch (e.item.props.subMenuKey) {
-    case "sort-menu-":
-      setSortType("default");
-      constsortType = "default";
-      break;
-    case "filterPrice-menu-":
-      setFilterPrice("all");
-      constfilterPrice = "all";
-      break;
-    case "filterMaterial-menu-":
-      setFilterMaterial("all");
-      constfilterMaterial = "all";
-      break;
-    case "filterDoor-menu-":
-      setFilterDoor("all");
-      constfilterDoor = "all";
-      break;
-  }
-  diFilters();
+  inputList = sortBy(inputList, props.sortType);
+  inputList = filterByMaterial(inputList, props.filterMaterial);
+  inputList = filterByDoor(inputList, props.filterDoor);
+  inputList = filterByPrice(inputList, props.filterPrice);
+  return inputList;
 };

@@ -10,6 +10,7 @@ import {
   ButtonLessStyled,
 } from "./CardItem.styled";
 import { Redirect } from "react-router-dom";
+import description from "../../containers/app/utils/Utils";
 
 const CardItem = ({ toyCar }) => {
   return (
@@ -36,14 +37,9 @@ class Info extends React.Component {
     this.state = {
       redirect: false,
       visible: false,
+      id: props.toyCar.id,
       title: props.toyCar.title,
-      description: `${props.toyCar.description} This car is made 
-      of ${props.toyCar.material}.
-      This toy is from ${props.toyCar.size} category and his 
-      length is ${props.toyCar.lengthInMM} mm.
-      Car has ${props.toyCar.doorCount} doors, and his potential age group 
-      is ${props.toyCar.ageGroup} years old.
-      And price af this great toy is only ${props.toyCar.priceInUAH} UAH`,
+      description: description(props.toyCar),
     };
   }
   showDrawer = () => {
@@ -73,7 +69,7 @@ class Info extends React.Component {
           />
           <ButtonStyled onClick={this.goToItem}>Open In Page</ButtonStyled>
           <ButtonLessStyled onClick={this.onClose}>Show Less</ButtonLessStyled>
-          {this.state.redirect && <Redirect to="/card" />}
+          {this.state.redirect && <Redirect to={`/item?id=${this.state.id}`} />}
         </MoreInfo>
       </div>
     );

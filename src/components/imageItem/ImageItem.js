@@ -14,6 +14,7 @@ import { Image } from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { Redirect } from "react-router-dom";
+import description from "../../containers/app/utils/Utils";
 
 const ImageItem = (props) => {
   const [isShown, setIsShown] = useState(-1);
@@ -43,15 +44,10 @@ const ImageItem = (props) => {
           </InfoHeader>
           <MainInfo>
             <TitleInfo>{toyCar.title}</TitleInfo>
-            <InfoDescription>
-              {toyCar.description} This car is made of {toyCar.material}. This
-              toy is from {toyCar.size} category and his length is{" "}
-              {toyCar.lengthInMM} mm. Car has {toyCar.doorCount} doors, and his
-              potential age group is {toyCar.ageGroup} years old.
-            </InfoDescription>
+            <InfoDescription>{description(toyCar)}</InfoDescription>
             <InfoPrice>{toyCar.priceInUAH} UAH</InfoPrice>
             <ButtonStyled onClick={goToItem}>Open In Page</ButtonStyled>
-            {redirect && <Redirect to="/card" />}
+            {redirect && <Redirect to={`/item?id=${toyCar.id}`} />}
           </MainInfo>
           <InfoFooter>
             <FontAwesomeIcon icon={faStar} />

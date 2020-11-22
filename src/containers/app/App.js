@@ -5,6 +5,11 @@ import Navigation from "./navigations/Navigation";
 import "./fonts/BebasNeue-Regular.ttf";
 import WebFont from "webfontloader";
 
+import { faArrowLeft, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import { library } from "@fortawesome/fontawesome-svg-core";
+
+library.add(faShoppingCart, faArrowLeft);
+
 function App() {
   WebFont.load({
     google: {

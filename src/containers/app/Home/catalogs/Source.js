@@ -20,7 +20,9 @@ export const data = [
     doorCount: 4,
     lengthInMM: 156,
     image: car1,
-    filter: ["all"],
+    wanted: 20,
+    bought: 6,
+
     id: 1,
   },
   {
@@ -35,7 +37,9 @@ export const data = [
     doorCount: 4,
     lengthInMM: 156,
     image: car2,
-    filter: ["all"],
+    wanted: 10,
+    bought: 2,
+
     id: 2,
   },
   {
@@ -50,7 +54,9 @@ export const data = [
     doorCount: 4,
     lengthInMM: 156,
     image: car3,
-    filter: ["all"],
+    wanted: 13,
+    bought: 0,
+
     id: 3,
   },
   {
@@ -65,7 +71,9 @@ export const data = [
     doorCount: 4,
     lengthInMM: 156,
     image: car4,
-    filter: ["all"],
+    wanted: 12,
+    bought: 1,
+
     id: 4,
   },
   {
@@ -80,7 +88,9 @@ export const data = [
     doorCount: 4,
     lengthInMM: 156,
     image: car5,
-    filter: ["all"],
+    wanted: 21,
+    bought: 5,
+
     id: 5,
   },
   {
@@ -95,7 +105,9 @@ export const data = [
     doorCount: 4,
     lengthInMM: 156,
     image: car6,
-    filter: ["all"],
+    wanted: 130,
+    bought: 61,
+
     id: 6,
   },
   {
@@ -110,7 +122,9 @@ export const data = [
     doorCount: 4,
     lengthInMM: 156,
     image: car7,
-    filter: ["all"],
+    wanted: 28,
+    bought: 9,
+
     id: 7,
   },
   {
@@ -125,7 +139,9 @@ export const data = [
     doorCount: 4,
     lengthInMM: 156,
     image: car8,
-    filter: ["all"],
+    wanted: 50,
+    bought: 17,
+
     id: 8,
   },
 ];
