@@ -21,7 +21,7 @@ const CardItem = ({ toyCar }) => {
       >
         <Footer>
           <MetaStyled title={toyCar.title} description={toyCar.description} />
-          <TextStyled>Price: ${toyCar.priceInUAH}UAH</TextStyled>
+          <TextStyled>Price: {toyCar.priceInUAH} UAH</TextStyled>
           <Info toyCar={toyCar} />
         </Footer>
       </CardStyled>

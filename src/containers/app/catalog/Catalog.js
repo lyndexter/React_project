@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { data as sourcedate } from "../Home/catalogs/Source";
+import { data as sourceData } from "../Home/catalogs/Source";
 import ContainerItem from "./container/ContainerItem";
 import { executeFilters } from "./Utils";
 import { Menu } from "antd";
@@ -15,7 +15,7 @@ import {
   IdcardOutlined,
 } from "@ant-design/icons";
 
-let data = sourcedate;
+let data = sourceData;
 const { SubMenu } = Menu;
 
 const options = [
@@ -42,8 +42,9 @@ const Catalog = () => {
   const [selectedKeys, setSelectedKeys] = useState(Object.values(CatalogState));
   const [toys, setToys] = useState([...data]);
   const handleInput = (sample) => {
+    sample = sample.toLowerCase();
     let resultList = [];
-    sourcedate.forEach((item) => {
+    sourceData.forEach((item) => {
       switch (true) {
         case item.priceInUAH.toString().includes(sample):
           resultList.push(item);
@@ -51,10 +52,10 @@ const Catalog = () => {
         case item.ageGroup.toString().includes(sample):
           resultList.push(item);
           break;
-        case item.color.includes(sample):
+        case item.color.toLowerCase().includes(sample):
           resultList.push(item);
           break;
-        case item.size.includes(sample):
+        case item.size.toLowerCase().includes(sample):
           resultList.push(item);
           break;
         case item.doorCount.toString().includes(sample):
@@ -63,17 +64,17 @@ const Catalog = () => {
         case item.lengthInMM.toString().includes(sample):
           resultList.push(item);
           break;
-        case item.material.includes(sample):
+        case item.material.toLowerCase().includes(sample):
           resultList.push(item);
           break;
-        case item.title.includes(sample):
+        case item.title.toLowerCase().includes(sample):
           resultList.push(item);
           break;
       }
     });
     data = resultList;
     if (sample == "") {
-      data = sourcedate;
+      data = sourceData;
     }
     setToys(executeFilters(CatalogState, data));
   };
@@ -136,7 +137,7 @@ const Catalog = () => {
 
         <SubMenu
           key="sort"
-          title="Choose View form"
+          title="Choose Sorting Order"
           icon={<SortAscendingOutlined />}
         >
           <Menu.Item key="highPrice">Highest Price</Menu.Item>
@@ -145,11 +146,7 @@ const Catalog = () => {
           <Menu.Item key="material">By material</Menu.Item>
         </SubMenu>
 
-        <SubMenu
-          key="filter"
-          title="Choose View form"
-          icon={<FilterOutlined />}
-        >
+        <SubMenu key="filter" title="Choose Filter" icon={<FilterOutlined />}>
           <SubMenu title="Filter by Price" key="filterPrice">
             <Menu.Item key="priceLess100">Price lower 100</Menu.Item>
             <Menu.Item key="priceMore100">Price over 100</Menu.Item>
@@ -183,7 +180,7 @@ const Catalog = () => {
               option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !==
               -1
             }
-            onChange={handleInput}
+            onSearch={handleInput}
           />
         </MenuItemStyled>
       </MenuStyled>

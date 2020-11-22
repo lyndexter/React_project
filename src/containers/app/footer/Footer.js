@@ -30,7 +30,7 @@ const Footer = () => {
           <a href="#">about us</a>
         </ContactText>
         <ContactText>
-          <a href="#">categoties</a>
+          <a href="http://localhost:3000/catalog">catalog</a>
         </ContactText>
         <ContactText>
           <a href="#">Preorder</a>
