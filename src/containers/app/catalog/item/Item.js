@@ -26,6 +26,7 @@ import {
   findDoorTag,
   findPriceTag,
   calculateAdditionPrice,
+  findSizeTag,
 } from "./Utils";
 
 const { Option } = Select;
@@ -33,28 +34,41 @@ const { Option } = Select;
 const Item = () => {
   const [item, setItem] = useState({});
   const [rate, setRate] = useState({ number: 3, sumRate: 8 });
-  const [priceTag, setPriceTag] = useState("");
-  const [materialTag, setMaterialTag] = useState("");
-  const [doorTag, setDoorTag] = useState("");
   const [wheelNumber, setWheelNumber] = useState(0);
   const [addition, setAddition] = useState("default");
   const [redirect, setRedirect] = useState(false);
 
   const location = useLocation();
   const totalPrice = useRef(null);
+  const tags = useRef({
+    price: "findPriceTag(item)",
+    material: "findMaterialTag(item)",
+    door: "findDoorTag(item)",
+    size: " findSizeTag(item)",
+  });
 
   useEffect(() => {
     const id = parseInt(location.search.split("=")[1]);
-    const foumdItem = data.find((element) => element.id === id);
-    console.log(foumdItem);
-    totalPrice.current = foumdItem.priceInUAH;
-    setItem(foumdItem);
-    setPriceTag(findPriceTag(item));
-    setMaterialTag(findMaterialTag(item));
-    setDoorTag(findDoorTag(item));
+    const foundItem = data.find((element) => element.id === id);
+    console.log(foundItem);
+    const priceTag = findPriceTag(foundItem);
+    const materialTag = findMaterialTag(foundItem);
+    const doorTag = findDoorTag(foundItem);
+    const sizeTag = findSizeTag(foundItem);
+    tags.current = {
+      price: priceTag,
+      material: materialTag,
+      door: doorTag,
+      size: sizeTag,
+    };
+    console.log(findPriceTag(foundItem));
+    console.log(tags);
+    setItem(foundItem);
+    totalPrice.current = foundItem.priceInUAH;
   }, []);
 
   const changeRate = (e) => {
+    console.log(tags);
     const newRate = {
       number: ++rate.number,
       sumRate: rate.sumRate + e,
@@ -82,9 +96,16 @@ const Item = () => {
         <Image src={item.image} />
         <ItemInfo>
           <TagContainer>
-            <Tag color="blue">{priceTag}</Tag>
-            {materialTag !== "" && <Tag color="green">{materialTag}</Tag>}
-            {doorTag !== "" && <Tag color="volcano">{doorTag}</Tag>}
+            <Tag color="blue">{tags.current.price}</Tag>
+            {tags.current.material !== "" && (
+              <Tag color="green">{tags.current.material}</Tag>
+            )}
+            {tags.current.door !== "" && (
+              <Tag color="volcano">{tags.current.door}</Tag>
+            )}
+            {tags.current.size !== "" && (
+              <Tag color="yellow">{tags.current.size}</Tag>
+            )}
           </TagContainer>
           <DividerStyled />
           <TitleStyled>{item.title}</TitleStyled>

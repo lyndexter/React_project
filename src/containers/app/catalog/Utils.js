@@ -22,7 +22,7 @@ export const comparator = (a, b, standard) => {
 };
 
 export const sortBy = (inputList, sortType) => {
-  if (sortType === "all") {
+  if (sortType === "default") {
     return [...data];
   }
   let result = inputList.sort((a, b) => comparator(a, b, sortType));
@@ -30,7 +30,7 @@ export const sortBy = (inputList, sortType) => {
 };
 
 export const filterByPrice = (inputList, filterPrice) => {
-  if (filterPrice === "all") {
+  if (filterPrice === "default") {
     return inputList;
   }
   let result = [];
@@ -54,7 +54,7 @@ export const filterByPrice = (inputList, filterPrice) => {
 };
 
 export const filterByDoor = (inputList, filterDoor) => {
-  if (filterDoor === "all") {
+  if (filterDoor === "default") {
     return inputList;
   }
   if (filterDoor === "doorsMore") {
@@ -70,7 +70,7 @@ export const filterByDoor = (inputList, filterDoor) => {
 };
 
 export const filterByMaterial = (inputList, filterMaterial) => {
-  if (filterMaterial === "all") {
+  if (filterMaterial === "default") {
     return inputList;
   }
   let result = [];
@@ -89,6 +89,17 @@ export const filterByMaterial = (inputList, filterMaterial) => {
   return result;
 };
 
+export const filterBySize = (inputList, findSize) => {
+  if (findSize === "default") {
+    return inputList;
+  }
+  let result = inputList.filter(
+    (a) => a.size === findSize.toUpperCase().substr(4)
+  );
+
+  return result;
+};
+
 export const executeFilters = (props, sourceList) => {
   data = sourceList;
   let inputList = [...data];
@@ -96,5 +107,6 @@ export const executeFilters = (props, sourceList) => {
   inputList = filterByMaterial(inputList, props.filterMaterial);
   inputList = filterByDoor(inputList, props.filterDoor);
   inputList = filterByPrice(inputList, props.filterPrice);
+  inputList = filterBySize(inputList, props.filterSize);
   return inputList;
 };

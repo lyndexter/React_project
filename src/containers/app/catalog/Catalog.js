@@ -25,23 +25,22 @@ const options = [
   { value: "100" },
   { value: "metal" },
   { value: "plastic" },
+  { value: "Small" },
+  { value: "Large" },
 ];
 
-const filters = {
-  sortType: "all",
-  filterPrice: "all",
-  filterMaterial: "all",
-  filterDoor: "all",
+const CatalogState = {
+  currentView: "card",
+  sortType: "default",
+  filterPrice: "default",
+  filterMaterial: "default",
+  filterDoor: "default",
+  filterSize: "default",
 };
 
 const Catalog = () => {
-  const [currentView, setCurrentView] = useState("image");
-  const [sortType, setSortType] = useState("all");
-  const [filterPrice, setFilterPrice] = useState("all");
-  const [filterMaterial, setFilterMaterial] = useState("all");
-  const [filterDoor, setFilterDoor] = useState("all");
+  const [selectedKeys, setSelectedKeys] = useState(Object.values(CatalogState));
   const [toys, setToys] = useState([...data]);
-
   const handleInput = (sample) => {
     let resultList = [];
     sourcedate.forEach((item) => {
@@ -76,43 +75,48 @@ const Catalog = () => {
     if (sample == "") {
       data = sourcedate;
     }
-    setToys(executeFilters(filters, data));
+    setToys(executeFilters(CatalogState, data));
   };
 
   const handleClick = (e) => {
+    console.log(e);
     switch (e.item.props.subMenuKey) {
       case "view-menu-":
-        if (e.key === "image") {
-          setCurrentView("image");
-        } else {
-          setCurrentView("card");
-        }
+        CatalogState.currentView = e.key;
         break;
       case "sort-menu-":
-        setSortType(e.key);
-        filters.sortType = e.key;
+        CatalogState.sortType = e.key;
         break;
       case "filterPrice-menu-":
-        setFilterPrice(e.key);
-        filters.filterPrice = e.key;
+        CatalogState.filterPrice = e.key;
         break;
       case "filterMaterial-menu-":
-        setFilterMaterial(e.key);
-        filters.filterMaterial = e.key;
+        CatalogState.filterMaterial = e.key;
         break;
       case "filterDoor-menu-":
-        setFilterDoor(e.key);
-        filters.filterDoor = e.key;
+        CatalogState.filterDoor = e.key;
+        break;
+      case "filterSize-menu-":
+        CatalogState.filterSize = e.key;
         break;
     }
-    setToys(executeFilters(filters, data));
+    setSelectedKeys(Object.values(CatalogState));
+    setToys(executeFilters(CatalogState, data));
   };
 
   const resetDefault = (e) => {
-    const props = {
-      key: "all",
-      item: { props: { subMenuKey: e.item.props.subMenuKey } },
-    };
+    let props = {};
+    if (e.item.props.subMenuKey === "view-menu-") {
+      props = {
+        key: "card",
+        item: { props: { subMenuKey: e.item.props.subMenuKey } },
+      };
+    } else {
+      props = {
+        key: "default",
+        item: { props: { subMenuKey: e.item.props.subMenuKey } },
+      };
+    }
     handleClick(props);
   };
 
@@ -122,13 +126,7 @@ const Catalog = () => {
         multiple
         onSelect={handleClick}
         onDeselect={resetDefault}
-        selectedKeys={[
-          currentView,
-          sortType,
-          filterPrice,
-          filterDoor,
-          filterMaterial,
-        ]}
+        selectedKeys={selectedKeys}
         mode="horizontal"
       >
         <SubMenu key="view" title="Choose View form" icon={<IdcardOutlined />}>
@@ -169,6 +167,11 @@ const Catalog = () => {
             <Menu.Item key="doors4">4 Door</Menu.Item>
             <Menu.Item key="doorsMore">More</Menu.Item>
           </SubMenu>
+          <SubMenu title="Filter by Size of car" key="filterSize">
+            <Menu.Item key="sizeSmall">Small</Menu.Item>
+            <Menu.Item key="sizeMedium">Medium</Menu.Item>
+            <Menu.Item key="sizeLarge">Large</Menu.Item>
+          </SubMenu>
         </SubMenu>
 
         <MenuItemStyled key="search">
@@ -184,7 +187,7 @@ const Catalog = () => {
           />
         </MenuItemStyled>
       </MenuStyled>
-      <ContainerItem toys={toys} currentView={currentView} />
+      <ContainerItem toys={toys} currentView={CatalogState.currentView} />
     </ViewComponent>
   );
 };

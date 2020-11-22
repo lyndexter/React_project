@@ -11,9 +11,9 @@ export const findPriceTag = (item) => {
 };
 
 export const findDoorTag = (item) => {
-  if ((item.doorCount = 2)) {
+  if (item.doorCount === 2) {
     return "2 Door car";
-  } else if ((item.doorCount = 4)) {
+  } else if (item.doorCount === 4) {
     return "4 Door car";
   }
   return "";
@@ -30,6 +30,17 @@ export const findMaterialTag = (item) => {
     return "Made of wood";
   } else if (item.material === "polisterol") {
     return "Made of polisterol";
+  }
+  return "";
+};
+
+export const findSizeTag = (item) => {
+  if (item.size === "SMALL") {
+    return "Small";
+  } else if (item.size === "MEDIUM") {
+    return "Medium";
+  } else if (item.size === "LARGE") {
+    return "Large";
   }
   return "";
 };
