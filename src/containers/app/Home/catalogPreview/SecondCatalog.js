@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { SortingPanel, SortingText } from "./SecondCalalog.styled";
+import { SortingPanel, SortingText } from "./SecondCatalog.styled";
 import { TitleStyled, CatalogContainer } from "./Catalog.styled";
 import { data } from "../../utils/Source";
 import ContainerItem from "../../../../components/container/ContainerItem";

@@ -20,7 +20,6 @@ export const TopPart = styled.div`
 `;
 
 export const ItemInfo = styled.div`
-  /* background-color: lightblue; */
   flex-grow: 1;
   height: auto;
   padding-left: 60px;
