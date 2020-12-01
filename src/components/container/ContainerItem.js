@@ -1,7 +1,7 @@
 import React from "react";
 import { EntityContainer } from "./ContainerItem.styled";
-import CardItem from "../../../../components/cardItem/CardItem";
-import ImageItem from "../../../../components/imageItem/ImageItem";
+import CardItem from "../cardItem/CardItem";
+import ImageItem from "../imageItem/ImageItem";
 import { Flipper, Flipped } from "react-flip-toolkit";
 
 const ContainerItem = ({ toys, currentView }) => {

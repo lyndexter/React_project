@@ -34,6 +34,10 @@ export const ButtonStyled = styled(Button)`
   height: 36px;
   margin: 0 auto;
   margin-left: 30px;
+  :hover {
+    border: 1px solid #020243;
+    color: #020243;
+  }
 `;
 
 export const CardImage = styled.img`

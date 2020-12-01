@@ -1,14 +1,8 @@
 import React, { useState } from "react";
-import {
-  SortingPanel,
-  SortingText,
-  ContainerImages,
-} from "./SecondCalalog.styled";
+import { SortingPanel, SortingText } from "./SecondCalalog.styled";
 import { TitleStyled, CatalogContainer } from "./Catalog.styled";
-
-import { Flipper, Flipped } from "react-flip-toolkit";
-import { data } from "./Source";
-import ImageItem from "../../../../components/imageItem/ImageItem";
+import { data } from "../../utils/Source";
+import ContainerItem from "../../../../components/container/ContainerItem";
 
 const CatalogNews = () => {
   const [toys, setToys] = useState([...data]);
@@ -59,17 +53,7 @@ const CatalogNews = () => {
         </SortingText>
       </SortingPanel>
 
-      <Flipper flipKey={toys}>
-        <ContainerImages>
-          {toys.map((toyCar) => (
-            <Flipped key={toyCar.id} flipId={toyCar.id}>
-              <div>
-                <ImageItem toyCar={toyCar} />
-              </div>
-            </Flipped>
-          ))}
-        </ContainerImages>
-      </Flipper>
+      <ContainerItem toys={toys} currentView="image" />
     </CatalogContainer>
   );
 };

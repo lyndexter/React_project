@@ -5,8 +5,8 @@ import {
   ButtonStyled,
   CatalogContainer,
 } from "./Catalog.styled";
-import ContainerItem from "../../catalog/container/ContainerItem";
-import { data as source } from "./Source";
+import ContainerItem from "../../../../components/container/ContainerItem";
+import { data as source } from "../../utils/Source";
 
 const Catalog = () => {
   const [data, setData] = useState(source.slice(0, 2));

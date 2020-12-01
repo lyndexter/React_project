@@ -17,7 +17,7 @@ import {
   StatisticStyled,
   StatisticContainer,
 } from "./Item.styled";
-import { data } from "../../Home/catalogs/Source";
+import { data } from "../../utils/Source";
 import { useLocation, Redirect } from "react-router-dom";
 import { Image, Tag, InputNumber, Select, Statistic } from "antd";
 import description from "../../utils/DescriptionGenerator";

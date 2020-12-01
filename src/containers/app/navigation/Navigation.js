@@ -1,7 +1,7 @@
 import React from "react";
-import Home from "../Home/Home";
-import Catalog from "../catalog/Catalog";
-import Item from "../catalog/item/Item";
+import Home from "../home/Home";
+import Catalog from "../catalog/catalogView/Catalog";
+import Item from "../catalog/itemView/Item";
 import Footer from "../footer/Footer";
 import {
   MenuStyled,

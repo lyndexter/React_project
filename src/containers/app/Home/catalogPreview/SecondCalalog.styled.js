@@ -21,10 +21,3 @@ export const SortingText = styled.li`
     text-shadow: ${(props) => (props.color ? "none" : "#595959 4px 0 10px")};
   }
 `;
-
-export const ContainerImages = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  justify-content: flex-start;
-`;
