@@ -10,7 +10,7 @@ import {
   ButtonLessStyled,
 } from "./CardItem.styled";
 import { useHistory } from "react-router-dom";
-import description from "../../containers/app/utils/Utils";
+import description from "../../containers/app/utils/DescriptionGenerator";
 
 const CardItem = ({ toyCar }) => {
   return (

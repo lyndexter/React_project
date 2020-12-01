@@ -20,7 +20,7 @@ import {
 import { data } from "../../Home/catalogs/Source";
 import { useLocation, Redirect } from "react-router-dom";
 import { Image, Tag, InputNumber, Select, Statistic } from "antd";
-import description from "../../utils/Utils";
+import description from "../../utils/DescriptionGenerator";
 import {
   findMaterialTag,
   findDoorTag,

@@ -1,6 +1,6 @@
 import "./App.css";
 
-import Navigation from "./navigations/Navigation";
+import Navigation from "./navigation/Navigation";
 import Header from "./header/Header";
 import { faArrowLeft, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";

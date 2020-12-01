@@ -14,7 +14,7 @@ import { Image } from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { Redirect } from "react-router-dom";
-import description from "../../containers/app/utils/Utils";
+import description from "../../containers/app/utils/DescriptionGenerator";
 
 const ImageItem = (props) => {
   const [isShown, setIsShown] = useState(-1);

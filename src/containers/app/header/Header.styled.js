@@ -1,5 +1,4 @@
 import styled, { createGlobalStyle } from "styled-components";
-import myFontURL from "../fonts/BebasNeue-Regular.ttf";
 
 export const StyledHeader = styled.section`
   margin: 0 auto;
