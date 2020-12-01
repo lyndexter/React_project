@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import {
   Footer,
   CardStyled,
@@ -9,7 +9,7 @@ import {
   MoreInfo,
   ButtonLessStyled,
 } from "./CardItem.styled";
-import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import description from "../../containers/app/utils/Utils";
 
 const CardItem = ({ toyCar }) => {
@@ -22,7 +22,7 @@ const CardItem = ({ toyCar }) => {
         <Footer>
           <MetaStyled title={toyCar.title} description={toyCar.description} />
           <TextStyled>Price: {toyCar.priceInUAH} UAH</TextStyled>
-          <Info toyCar={toyCar} />
+          <AllInfo toyCar={toyCar} />
         </Footer>
       </CardStyled>
     </div>
@@ -31,47 +31,31 @@ const CardItem = ({ toyCar }) => {
 
 export default CardItem;
 
-class Info extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      redirect: false,
-      visible: false,
-      id: props.toyCar.id,
-      title: props.toyCar.title,
-      description: description(props.toyCar),
-    };
-  }
-  showDrawer = () => {
-    this.setState({
-      visible: true,
-    });
-  };
+const AllInfo = ({ toyCar }) => {
+  const [visible, setVisible] = useState(false);
 
-  onClose = () => {
-    this.setState({
-      visible: false,
-    });
-  };
+  let history = useHistory();
 
-  goToItem = () => {
-    this.setState({ redirect: true });
-  };
-
-  render() {
-    return (
-      <div>
-        <ButtonStyled onClick={this.showDrawer}>Read More</ButtonStyled>
-        <MoreInfo height={this.state.visible}>
-          <MetaStyled
-            title={this.state.title}
-            description={this.state.description}
-          />
-          <ButtonStyled onClick={this.goToItem}>Open In Page</ButtonStyled>
-          <ButtonLessStyled onClick={this.onClose}>Show Less</ButtonLessStyled>
-          {this.state.redirect && <Redirect to={`/item?id=${this.state.id}`} />}
-        </MoreInfo>
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      <ButtonStyled onClick={() => setVisible(true)}>Read More</ButtonStyled>
+      <MoreInfo height={visible}>
+        <MetaStyled title={toyCar.title} description={description(toyCar)} />
+        <ButtonStyled
+          onClick={() => {
+            history.push(`/item?id=${toyCar.id}`);
+          }}
+        >
+          Open In Page
+        </ButtonStyled>
+        <ButtonLessStyled
+          onClick={() => {
+            setVisible(false);
+          }}
+        >
+          Show Less
+        </ButtonLessStyled>
+      </MoreInfo>
+    </div>
+  );
+};

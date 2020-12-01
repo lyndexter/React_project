@@ -22,6 +22,8 @@ const Catalog = () => {
       top: 800,
       behavior: "smooth",
     });
+    console.log(window);
+
     setData(source.slice(0, 2));
     setIsShowMore(false);
   };
@@ -32,7 +34,9 @@ const Catalog = () => {
       <ContainerCards>
         <ContainerItem toys={data} currentView="card" />
       </ContainerCards>
-      {!isShowMore && <ButtonStyled onClick={showMore}>Show More</ButtonStyled>}
+      {!isShowMore && (
+        <ButtonStyled onClick={() => showMore()}>Show More</ButtonStyled>
+      )}
       {isShowMore && <ButtonStyled onClick={showLess}>Show Less</ButtonStyled>}
     </CatalogContainer>
   );

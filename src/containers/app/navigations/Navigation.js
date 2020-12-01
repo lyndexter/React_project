@@ -2,6 +2,7 @@ import React from "react";
 import Home from "../Home/Home";
 import Catalog from "../catalog/Catalog";
 import Item from "../catalog/item/Item";
+import Footer from "../footer/Footer";
 import {
   MenuStyled,
   MenuItem,
@@ -70,10 +71,26 @@ const Navigation = () => {
           <Route path="/item">
             <Item />
           </Route>
+          <Route path="/contact">
+            <div>
+              contact us <br /> in this page is info how to contact with us
+            </div>
+          </Route>
+          <Route path="/about">
+            <div>
+              about us <br /> in this page is info about us
+            </div>
+          </Route>
+          <Route path="/news">
+            <div>
+              news <br /> in this page is info
+            </div>
+          </Route>
           <Route path="/">
             <Home />
           </Route>
         </Switch>
+        <Footer />
       </Router>
     </ContainerStyled>
   );

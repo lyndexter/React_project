@@ -19,27 +19,33 @@ import {
   BrandStuff,
 } from "./Footer.styles";
 import logo from "../../../images/logo.svg";
+import { useHistory } from "react-router-dom";
 
 const Footer = () => {
+  let history = useHistory();
+
+  const goToResource = (name) => {
+    history.push(`/${name}`);
+  };
+
   return (
     <StyledFooter>
       <LogoStyled src={logo} />
       <ContactContainer>
         <ContactText>
-          {" "}
-          <a href="#">about us</a>
+          <a onClick={() => goToResource("about")}>about us</a>
         </ContactText>
         <ContactText>
-          <a href="http://localhost:3000/catalog">catalog</a>
+          <a onClick={() => goToResource("catalog")}>catalog</a>
         </ContactText>
         <ContactText>
           <a href="#">Preorder</a>
         </ContactText>
         <ContactText>
-          <a href="#">contact us</a>
+          <a onClick={() => goToResource("contact")}>contact us</a>
         </ContactText>
         <ContactText>
-          <a href="#">recieve our news</a>
+          <a onClick={() => goToResource("news")}>recieve our news</a>
         </ContactText>
       </ContactContainer>
       <BrandStuff>

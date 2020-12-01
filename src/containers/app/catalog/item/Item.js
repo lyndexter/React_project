@@ -48,9 +48,9 @@ const Item = () => {
   });
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const id = parseInt(location.search.split("=")[1]);
     const foundItem = data.find((element) => element.id === id);
-    console.log(foundItem);
     const priceTag = findPriceTag(foundItem);
     const materialTag = findMaterialTag(foundItem);
     const doorTag = findDoorTag(foundItem);

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { data as sourceData } from "../Home/catalogs/Source";
 import ContainerItem from "./container/ContainerItem";
 import { executeFilters } from "./Utils";
@@ -41,6 +41,11 @@ const CatalogState = {
 const Catalog = () => {
   const [selectedKeys, setSelectedKeys] = useState(Object.values(CatalogState));
   const [toys, setToys] = useState([...data]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const handleInput = (sample) => {
     sample = sample.toLowerCase();
     let resultList = [];
