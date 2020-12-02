@@ -28,7 +28,7 @@ const ImageItem = (props) => {
   return (
     <ImageCard>
       <Image
-        src={toyCar.image}
+        src={toyCar.imageSrc}
         onMouseEnter={() => setIsShown(toyCar.id)}
         onMouseLeave={() => setIsShown(-1)}
       />

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import LoadingElement from "./Loading";
 import { CenterContainer, MessegeInfo } from "./LoadPreview.styled";
 
@@ -7,10 +7,15 @@ const LoadPrewiew = ({
   description = "Please try again later",
 }) => {
   const [load, setLoad] = useState(false);
-  setTimeout(() => {
-    setLoad(true);
-  }, 5000);
-  console.log(load);
+  useEffect(() => {
+    let myTimeout = setTimeout(() => {
+      setLoad(true);
+    }, 5000);
+    console.log(load);
+    return function cleanUp() {
+      clearTimeout(myTimeout);
+    };
+  }, []);
   if (!load) {
     return <LoadingElement />;
   }

@@ -27,7 +27,7 @@ import {
   calculateAdditionPrice,
   findSizeTag,
 } from "./Utils";
-import { fetchDataById } from "../../utils/Api";
+import { fetchDataById, patchData } from "../../utils/Api";
 import LoadPrewiew from "../../../../components/loading/LoadPreview";
 
 const { Option } = Select;
@@ -52,9 +52,15 @@ const Item = () => {
     window.scrollTo(0, 0);
 
     const id = parseInt(location.search.split("=")[1]);
-    fetchDataById(id).then(([foundItem]) => {
-      setItem(foundItem);
-    });
+    fetchDataById(id)
+      .then(([foundItem]) => {
+        foundItem.wanted++;
+        setItem(foundItem);
+        patchData(foundItem);
+      })
+      .catch(() => {
+        console.log("cant download element");
+      });
   }, []);
 
   useEffect(() => {
@@ -103,7 +109,7 @@ const Item = () => {
   return (
     <StyledItem>
       <TopPart>
-        <Image src={item.image} />
+        <Image src={item.imageSrc} />
         <ItemInfo>
           <TagContainer>
             <Tag color="blue">{tags.current.price}</Tag>

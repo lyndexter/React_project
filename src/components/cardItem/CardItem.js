@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import {
   Footer,
   CardStyled,
@@ -17,7 +17,7 @@ const CardItem = ({ toyCar }) => {
     <div>
       <CardStyled
         hoverable
-        cover={<CardImage alt="Toy Car" src={toyCar.image} />}
+        cover={<CardImage alt="Toy Car" src={toyCar.imageSrc} />}
       >
         <Footer>
           <MetaStyled title={toyCar.title} description={toyCar.description} />
@@ -39,7 +39,7 @@ const AllInfo = ({ toyCar }) => {
   return (
     <div>
       <ButtonStyled onClick={() => setVisible(true)}>Read More</ButtonStyled>
-      <MoreInfo height={visible}>
+      <MoreInfo height={visible ? 1 : 0}>
         <MetaStyled title={toyCar.title} description={description(toyCar)} />
         <ButtonStyled
           onClick={() => {

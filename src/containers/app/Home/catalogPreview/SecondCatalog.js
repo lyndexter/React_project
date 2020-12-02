@@ -44,7 +44,7 @@ const CatalogNews = () => {
     <CatalogContainer>
       <TitleStyled>• Latest Cars •</TitleStyled>
       <SortingPanel>
-        <SortingText color>Sort By:</SortingText>
+        <SortingText color="true">Sort By:</SortingText>
         <SortingText onClick={() => sortBy("Highest Price")}>
           Highest Price
         </SortingText>

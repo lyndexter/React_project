@@ -1,3 +1,5 @@
+import { CatalogState } from "./Source";
+
 let data = [];
 
 const comparator = (a, b, standard) => {
@@ -147,4 +149,28 @@ export const findBy = (sample, source) => {
     data = source;
   }
   return data;
+};
+
+export const changeCatalogState = (e) => {
+  switch (e.item.props.subMenuKey) {
+    case "view-menu-":
+      CatalogState.currentView = e.key;
+      break;
+    case "sort-menu-":
+      CatalogState.sortType = e.key;
+      break;
+    case "filterPrice-menu-":
+      CatalogState.filterPrice = e.key;
+      break;
+    case "filterMaterial-menu-":
+      CatalogState.filterMaterial = e.key;
+      break;
+    case "filterDoor-menu-":
+      CatalogState.filterDoor = e.key;
+      break;
+    case "filterSize-menu-":
+      CatalogState.filterSize = e.key;
+      break;
+  }
+  return CatalogState;
 };

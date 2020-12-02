@@ -18,6 +18,4 @@ export const MenuStyled = styled(Menu)`
   }
 `;
 
-export const MenuItemStyled = styled(Menu.Item)`
-  /* margin-left: 400px; */
-`;
+export const MenuItemStyled = styled(Menu.Item)``;

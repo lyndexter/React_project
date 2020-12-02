@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import ContainerItem from "../../../../components/container/ContainerItem";
-import { executeFilters, findBy } from "./Utils";
+import { executeFilters, findBy, changeCatalogState } from "./Utils";
 import { Menu } from "antd";
 import {
   ViewComponent,
@@ -40,26 +40,7 @@ const Catalog = () => {
 
   const handleClick = (e) => {
     console.log(e);
-    switch (e.item.props.subMenuKey) {
-      case "view-menu-":
-        CatalogState.currentView = e.key;
-        break;
-      case "sort-menu-":
-        CatalogState.sortType = e.key;
-        break;
-      case "filterPrice-menu-":
-        CatalogState.filterPrice = e.key;
-        break;
-      case "filterMaterial-menu-":
-        CatalogState.filterMaterial = e.key;
-        break;
-      case "filterDoor-menu-":
-        CatalogState.filterDoor = e.key;
-        break;
-      case "filterSize-menu-":
-        CatalogState.filterSize = e.key;
-        break;
-    }
+    let CatalogState = changeCatalogState(e);
     setSelectedKeys(Object.values(CatalogState));
     setToys(executeFilters(CatalogState, data));
   };

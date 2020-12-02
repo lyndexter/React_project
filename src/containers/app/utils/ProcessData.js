@@ -11,30 +11,31 @@ export const setImages = (initialData) => {
   initialData.forEach((item) => {
     switch (parseInt(item.image)) {
       case 1:
-        item.image = car1;
+        item.imageSrc = car1;
         break;
       case 2:
-        item.image = car2;
+        item.imageSrc = car2;
         break;
       case 3:
-        item.image = car3;
+        item.imageSrc = car3;
         break;
       case 4:
-        item.image = car4;
+        item.imageSrc = car4;
         break;
       case 5:
-        item.image = car5;
+        item.imageSrc = car5;
         break;
       case 6:
-        item.image = car6;
+        item.imageSrc = car6;
         break;
       case 7:
-        item.image = car7;
+        item.imageSrc = car7;
         break;
       case 8:
-        item.image = car8;
+        item.imageSrc = car8;
         break;
     }
   });
+  console.log("checking image", initialData);
   return initialData;
 };
