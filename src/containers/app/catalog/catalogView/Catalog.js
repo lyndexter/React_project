@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import ContainerItem from "../../../../components/container/ContainerItem";
-import { executeFilters } from "./Utils";
+import { executeFilters, findBy } from "./Utils";
 import { Menu } from "antd";
 import {
   ViewComponent,
@@ -14,30 +14,10 @@ import {
   IdcardOutlined,
 } from "@ant-design/icons";
 import ElementsContext from "../../utils/Context";
-import LoadingElement from "../../../../components/loading/Loading";
 import LoadPrewiew from "../../../../components/loading/LoadPreview";
+import { CatalogState, options } from "./Source";
 
 const { SubMenu } = Menu;
-
-const options = [
-  { value: "Mersedess" },
-  { value: "Porshe" },
-  { value: "200" },
-  { value: "100" },
-  { value: "metal" },
-  { value: "plastic" },
-  { value: "Small" },
-  { value: "Large" },
-];
-
-const CatalogState = {
-  currentView: "card",
-  sortType: "default",
-  filterPrice: "default",
-  filterMaterial: "default",
-  filterDoor: "default",
-  filterSize: "default",
-};
 
 const Catalog = () => {
   const { source } = useContext(ElementsContext);
@@ -54,40 +34,7 @@ const Catalog = () => {
   }, [source]);
 
   const handleInput = (sample) => {
-    sample = sample.toLowerCase();
-    let resultList = [];
-    source.forEach((item) => {
-      switch (true) {
-        case item.priceInUAH.toString().includes(sample):
-          resultList.push(item);
-          break;
-        case item.ageGroup.toString().includes(sample):
-          resultList.push(item);
-          break;
-        case item.color.toLowerCase().includes(sample):
-          resultList.push(item);
-          break;
-        case item.size.toLowerCase().includes(sample):
-          resultList.push(item);
-          break;
-        case item.doorCount.toString().includes(sample):
-          resultList.push(item);
-          break;
-        case item.lengthInMM.toString().includes(sample):
-          resultList.push(item);
-          break;
-        case item.material.toLowerCase().includes(sample):
-          resultList.push(item);
-          break;
-        case item.title.toLowerCase().includes(sample):
-          resultList.push(item);
-          break;
-      }
-    });
-    data = resultList;
-    if (sample == "") {
-      data = source;
-    }
+    data = findBy(sample, source);
     setToys(executeFilters(CatalogState, data));
   };
 

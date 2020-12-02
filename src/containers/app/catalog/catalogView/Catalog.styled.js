@@ -12,8 +12,12 @@ export const MenuStyled = styled(Menu)`
   display: flex;
   width: auto;
   margin-top: 10px;
+  color: #020243;
+  li:nth-child(8) {
+    right: -600px;
+  }
 `;
 
 export const MenuItemStyled = styled(Menu.Item)`
-  margin-left: 400px;
+  /* margin-left: 400px; */
 `;

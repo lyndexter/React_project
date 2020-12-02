@@ -1,6 +1,6 @@
 let data = [];
 
-export const comparator = (a, b, standard) => {
+const comparator = (a, b, standard) => {
   switch (standard) {
     case "highPrice":
       if (a.priceInUAH > b.priceInUAH) return -1;
@@ -21,7 +21,7 @@ export const comparator = (a, b, standard) => {
   }
 };
 
-export const sortBy = (inputList, sortType) => {
+const sortBy = (inputList, sortType) => {
   if (sortType === "default") {
     return [...data];
   }
@@ -29,7 +29,7 @@ export const sortBy = (inputList, sortType) => {
   return result;
 };
 
-export const filterByPrice = (inputList, filterPrice) => {
+const filterByPrice = (inputList, filterPrice) => {
   if (filterPrice === "default") {
     return inputList;
   }
@@ -53,7 +53,7 @@ export const filterByPrice = (inputList, filterPrice) => {
   return result;
 };
 
-export const filterByDoor = (inputList, filterDoor) => {
+const filterByDoor = (inputList, filterDoor) => {
   if (filterDoor === "default") {
     return inputList;
   }
@@ -69,7 +69,7 @@ export const filterByDoor = (inputList, filterDoor) => {
   return result;
 };
 
-export const filterByMaterial = (inputList, filterMaterial) => {
+const filterByMaterial = (inputList, filterMaterial) => {
   if (filterMaterial === "default") {
     return inputList;
   }
@@ -89,7 +89,7 @@ export const filterByMaterial = (inputList, filterMaterial) => {
   return result;
 };
 
-export const filterBySize = (inputList, findSize) => {
+const filterBySize = (inputList, findSize) => {
   if (findSize === "default") {
     return inputList;
   }
@@ -109,4 +109,42 @@ export const executeFilters = (props, sourceList) => {
   inputList = filterByPrice(inputList, props.filterPrice);
   inputList = filterBySize(inputList, props.filterSize);
   return inputList;
+};
+
+export const findBy = (sample, source) => {
+  sample = sample.toLowerCase();
+  let resultList = [];
+  source.forEach((item) => {
+    switch (true) {
+      case item.priceInUAH.toString().includes(sample):
+        resultList.push(item);
+        break;
+      case item.ageGroup.toString().includes(sample):
+        resultList.push(item);
+        break;
+      case item.color.toLowerCase().includes(sample):
+        resultList.push(item);
+        break;
+      case item.size.toLowerCase().includes(sample):
+        resultList.push(item);
+        break;
+      case item.doorCount.toString().includes(sample):
+        resultList.push(item);
+        break;
+      case item.lengthInMM.toString().includes(sample):
+        resultList.push(item);
+        break;
+      case item.material.toLowerCase().includes(sample):
+        resultList.push(item);
+        break;
+      case item.title.toLowerCase().includes(sample):
+        resultList.push(item);
+        break;
+    }
+  });
+  data = resultList;
+  if (sample == "") {
+    data = source;
+  }
+  return data;
 };
