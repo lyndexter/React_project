@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { data as sourceData } from "../../utils/Source";
+import React, { useState, useEffect, useContext } from "react";
 import ContainerItem from "../../../../components/container/ContainerItem";
 import { executeFilters } from "./Utils";
 import { Menu } from "antd";
@@ -14,8 +13,10 @@ import {
   FilterOutlined,
   IdcardOutlined,
 } from "@ant-design/icons";
+import ElementsContext from "../../utils/Context";
+import LoadingElement from "../../../../components/loading/Loading";
+import LoadPrewiew from "../../../../components/loading/LoadPreview";
 
-let data = sourceData;
 const { SubMenu } = Menu;
 
 const options = [
@@ -39,6 +40,8 @@ const CatalogState = {
 };
 
 const Catalog = () => {
+  const { source } = useContext(ElementsContext);
+  let data = source;
   const [selectedKeys, setSelectedKeys] = useState(Object.values(CatalogState));
   const [toys, setToys] = useState([...data]);
 
@@ -46,10 +49,14 @@ const Catalog = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  useEffect(() => {
+    setToys(source);
+  }, [source]);
+
   const handleInput = (sample) => {
     sample = sample.toLowerCase();
     let resultList = [];
-    sourceData.forEach((item) => {
+    source.forEach((item) => {
       switch (true) {
         case item.priceInUAH.toString().includes(sample):
           resultList.push(item);
@@ -79,7 +86,7 @@ const Catalog = () => {
     });
     data = resultList;
     if (sample == "") {
-      data = sourceData;
+      data = source;
     }
     setToys(executeFilters(CatalogState, data));
   };
@@ -111,21 +118,17 @@ const Catalog = () => {
   };
 
   const resetDefault = (e) => {
-    let props = {};
+    let props = {
+      key: "default",
+      item: { props: { subMenuKey: e.item.props.subMenuKey } },
+    };
     if (e.item.props.subMenuKey === "view-menu-") {
-      props = {
-        key: "card",
-        item: { props: { subMenuKey: e.item.props.subMenuKey } },
-      };
-    } else {
-      props = {
-        key: "default",
-        item: { props: { subMenuKey: e.item.props.subMenuKey } },
-      };
+      props.key = "card";
     }
     handleClick(props);
   };
 
+  console.log(toys);
   return (
     <ViewComponent>
       <MenuStyled
@@ -189,7 +192,11 @@ const Catalog = () => {
           />
         </MenuItemStyled>
       </MenuStyled>
-      <ContainerItem toys={toys} currentView={CatalogState.currentView} />
+      {toys.length !== 0 ? (
+        <ContainerItem toys={toys} currentView={CatalogState.currentView} />
+      ) : (
+        <LoadPrewiew />
+      )}
     </ViewComponent>
   );
 };

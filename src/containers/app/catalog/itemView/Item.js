@@ -17,7 +17,6 @@ import {
   StatisticStyled,
   StatisticContainer,
 } from "./Item.styled";
-import { data } from "../../utils/Source";
 import { useLocation, Redirect } from "react-router-dom";
 import { Image, Tag, InputNumber, Select, Statistic } from "antd";
 import description from "../../utils/DescriptionGenerator";
@@ -28,12 +27,14 @@ import {
   calculateAdditionPrice,
   findSizeTag,
 } from "./Utils";
+import { fetchDataById } from "../../utils/Api";
+import LoadPrewiew from "../../../../components/loading/LoadPreview";
 
 const { Option } = Select;
 
 const Item = () => {
   const [item, setItem] = useState({});
-  const [rate, setRate] = useState({ number: 3, sumRate: 8 });
+  const [rate, setRate] = useState({ number: 0, sumRate: 0 });
   const [wheelNumber, setWheelNumber] = useState(0);
   const [addition, setAddition] = useState("default");
   const [redirect, setRedirect] = useState(false);
@@ -49,26 +50,31 @@ const Item = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+
     const id = parseInt(location.search.split("=")[1]);
-    const foundItem = data.find((element) => element.id === id);
-    const priceTag = findPriceTag(foundItem);
-    const materialTag = findMaterialTag(foundItem);
-    const doorTag = findDoorTag(foundItem);
-    const sizeTag = findSizeTag(foundItem);
-    tags.current = {
-      price: priceTag,
-      material: materialTag,
-      door: doorTag,
-      size: sizeTag,
-    };
-    console.log(findPriceTag(foundItem));
-    console.log(tags);
-    setItem(foundItem);
-    totalPrice.current = foundItem.priceInUAH;
+    fetchDataById(id).then(([foundItem]) => {
+      setItem(foundItem);
+    });
   }, []);
 
+  useEffect(() => {
+    if (item === undefined) {
+      return;
+    }
+    tags.current = {
+      price: findPriceTag(item),
+      material: findMaterialTag(item),
+      door: findDoorTag(item),
+      size: findSizeTag(item),
+    };
+    setRate({
+      number: item.numberMarks,
+      sumRate: item.rate,
+    });
+    totalPrice.current = item.priceInUAH;
+  }, [item]);
+
   const changeRate = (e) => {
-    console.log(tags);
     const newRate = {
       number: ++rate.number,
       sumRate: rate.sumRate + e,
@@ -89,6 +95,10 @@ const Item = () => {
     totalPrice.current =
       item.priceInUAH + calculateAdditionPrice(localAddition, localWheelNumber);
   };
+
+  if (Object.keys(item).length === 0) {
+    return <LoadPrewiew />;
+  }
 
   return (
     <StyledItem>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import {
   ContainerCards,
   TitleStyled,
@@ -6,14 +6,20 @@ import {
   CatalogContainer,
 } from "./Catalog.styled";
 import ContainerItem from "../../../../components/container/ContainerItem";
-import { data as source } from "../../utils/Source";
+import ElementsContext from "../../utils/Context";
+import LoadPrewiew from "../../../../components/loading/LoadPreview";
 
 const Catalog = () => {
+  const { source } = useContext(ElementsContext);
+  useEffect(() => {
+    setData(source.slice(0, 2));
+  }, [source]);
+
+  console.log(source);
   const [data, setData] = useState(source.slice(0, 2));
   const [isShowMore, setIsShowMore] = useState(false);
-
   const showMore = () => {
-    setData(source);
+    setData(source.slice(0, 4));
     setIsShowMore(true);
   };
 
@@ -32,7 +38,11 @@ const Catalog = () => {
     <CatalogContainer>
       <TitleStyled>• Features Cars •</TitleStyled>
       <ContainerCards>
-        <ContainerItem toys={data} currentView="card" />
+        {data.length === 0 ? (
+          <LoadPrewiew />
+        ) : (
+          <ContainerItem toys={data} currentView="card" />
+        )}
       </ContainerCards>
       {!isShowMore && (
         <ButtonStyled onClick={() => showMore()}>Show More</ButtonStyled>
