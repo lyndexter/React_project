@@ -11,7 +11,6 @@ const LoadPrewiew = ({
     let myTimeout = setTimeout(() => {
       setLoad(true);
     }, 5000);
-    console.log(load);
     return function cleanUp() {
       clearTimeout(myTimeout);
     };

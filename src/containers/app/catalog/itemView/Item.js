@@ -17,8 +17,8 @@ import {
   StatisticStyled,
   StatisticContainer,
 } from "./Item.styled";
-import { useLocation, Redirect } from "react-router-dom";
-import { Image, Tag, InputNumber, Select, Statistic } from "antd";
+import { useLocation, useHistory } from "react-router-dom";
+import { Image, Tag, InputNumber, Select } from "antd";
 import description from "../../utils/DescriptionGenerator";
 import {
   findMaterialTag,
@@ -29,6 +29,8 @@ import {
 } from "./Utils";
 import { fetchDataById, patchData } from "../../utils/Api";
 import LoadPrewiew from "../../../../components/loading/LoadPreview";
+import { useDispatch } from "react-redux";
+import { createItem } from "../../utils/redux/Action";
 
 const { Option } = Select;
 
@@ -37,8 +39,7 @@ const Item = () => {
   const [rate, setRate] = useState({ number: 0, sumRate: 0 });
   const [wheelNumber, setWheelNumber] = useState(0);
   const [addition, setAddition] = useState("default");
-  const [redirect, setRedirect] = useState(false);
-
+  const dispatch = useDispatch();
   const location = useLocation();
   const totalPrice = useRef(null);
   const tags = useRef({
@@ -47,6 +48,8 @@ const Item = () => {
     door: "findDoorTag(item)",
     size: " findSizeTag(item)",
   });
+
+  let history = useHistory();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -100,6 +103,18 @@ const Item = () => {
     }
     totalPrice.current =
       item.priceInUAH + calculateAdditionPrice(localAddition, localWheelNumber);
+  };
+
+  const goToCard = () => {
+    dispatch(
+      createItem({
+        id: item.id,
+        title: item.title,
+        priceInUAH: totalPrice.current,
+        imageSrc: item.imageSrc,
+        number: 1,
+      })
+    );
   };
 
   if (Object.keys(item).length === 0) {
@@ -157,13 +172,15 @@ const Item = () => {
       <BottomPart>
         <StyledPrice>Price: {totalPrice.current} UAH</StyledPrice>
         <ButtonItemStyled
-          onClick={() => setRedirect(true)}
+          onClick={history.goBack}
           icon={<IconOnButton icon="arrow-left" />}
         >
           GO Back
         </ButtonItemStyled>
-        {redirect && <Redirect push to="/catalog" />}
-        <ButtonItemStyled icon={<IconOnButton icon="shopping-cart" />}>
+        <ButtonItemStyled
+          onClick={goToCard}
+          icon={<IconOnButton icon="shopping-cart" />}
+        >
           Add to Cart
         </ButtonItemStyled>
       </BottomPart>

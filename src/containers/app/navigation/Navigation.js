@@ -2,6 +2,7 @@ import React from "react";
 import Home from "../home/Home";
 import Catalog from "../catalog/catalogView/Catalog";
 import Item from "../catalog/itemView/Item";
+import Cart from "../cart/cartPage/Cart";
 import Footer from "../footer/Footer";
 import {
   MenuStyled,
@@ -47,7 +48,7 @@ const Navigation = () => {
           <MenuItem>
             <NavLink
               exact
-              to="/card"
+              to="/cart"
               activeClassName="selected"
               style={{ textDecoration: "none", color: "#313943" }}
             >
@@ -65,8 +66,8 @@ const Navigation = () => {
           <Route path="/catalog">
             <Catalog />
           </Route>
-          <Route path="/card">
-            <div>It's card and now there is nothing</div>
+          <Route path="/cart">
+            <Cart />
           </Route>
           <Route path="/item">
             <Item />

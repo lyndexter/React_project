@@ -15,7 +15,6 @@ const Catalog = () => {
     setData(source.slice(0, 2));
   }, [source]);
 
-  console.log(source);
   const [data, setData] = useState(source.slice(0, 2));
   const [isShowMore, setIsShowMore] = useState(false);
   const showMore = () => {
@@ -28,7 +27,6 @@ const Catalog = () => {
       top: 800,
       behavior: "smooth",
     });
-    console.log(window);
 
     setData(source.slice(0, 2));
     setIsShowMore(false);

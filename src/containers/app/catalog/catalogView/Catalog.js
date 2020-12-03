@@ -56,7 +56,6 @@ const Catalog = () => {
     handleClick(props);
   };
 
-  console.log(toys);
   return (
     <ViewComponent>
       <MenuStyled

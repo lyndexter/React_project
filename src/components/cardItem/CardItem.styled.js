@@ -18,6 +18,7 @@ export const CardStyled = styled(Card)`
   width: 680px;
   height: 400px;
   display: flex;
+  margin-bottom: 5%;
 `;
 
 export const ButtonStyled = styled(Button)`

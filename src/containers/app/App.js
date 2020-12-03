@@ -6,6 +6,8 @@ import { faArrowLeft, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import ElementsContext from "./utils/Context";
 import { fetchData } from "./utils/Api";
+import { Provider } from "react-redux";
+import store from "./utils/redux/Store";
 
 library.add(faShoppingCart, faArrowLeft);
 
@@ -19,9 +21,10 @@ function App() {
   return (
     <div className="App">
       <Header />
-
       <ElementsContext.Provider value={{ source, setSource }}>
-        <Navigation />
+        <Provider store={store}>
+          <Navigation />
+        </Provider>
       </ElementsContext.Provider>
     </div>
   );
