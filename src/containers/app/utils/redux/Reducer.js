@@ -1,14 +1,23 @@
 import { createReserved, deleteReserved, updateReserved } from "./Hardcode";
 
-const changeItems = (state, action) => {
-  let orders = { ...state.orders };
-  orders[action.payload.id] = action.payload;
+const changeItem = (state, action) => {
+  let orders = state.orders.slice();
+  let foundIndex = orders.findIndex(
+    (element) => element.id === action.payload.id
+  );
+  orders[foundIndex] = action.payload;
+  return orders;
+};
+
+const createItem = (state, action) => {
+  let orders = state.orders.slice();
+  orders.push(action.payload);
   return orders;
 };
 
 const deleteItem = (state, action) => {
-  let orders = { ...state.orders };
-  delete orders[action.payload.id];
+  let orders = state.orders.slice();
+  orders = orders.filter((element) => element.id !== action.payload.id);
   return orders;
 };
 
@@ -23,11 +32,14 @@ const calculatePrice = (data) => {
 const reducer = (state = {}, action) => {
   let orders;
   switch (action.type) {
-    case "start":
-      return { orders: [...state.orders, 1], totalPrice: 495 };
     case updateReserved:
+      orders = changeItem(state, action);
+      return {
+        orders,
+        totalPrice: calculatePrice(orders),
+      };
     case createReserved:
-      orders = changeItems(state, action);
+      orders = createItem(state, action);
       return {
         orders,
         totalPrice: calculatePrice(orders),

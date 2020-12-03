@@ -22,8 +22,8 @@ const Cart = () => {
   return (
     <CartContainer>
       <TitleStyled>Shopping Cart</TitleStyled>
-      {Object.keys(select.orders).map((key) => {
-        return <ReservedItem value={select.orders[key]} />;
+      {select.orders.map((value) => {
+        return <ReservedItem value={value} />;
       })}
 
       <TotalPriceSyled>Total Price: {select.totalPrice} UAH</TotalPriceSyled>

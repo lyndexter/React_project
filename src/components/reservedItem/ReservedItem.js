@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   CardStyled,
   MinusStyled,
@@ -8,7 +8,7 @@ import {
   StyledCounter,
   IconAwasomeStyled,
 } from "./ReservedItem.styled";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   deleteItem,
   updateItem,
@@ -19,7 +19,9 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 const ReservedItem = ({ value }) => {
   const [element, setElement] = useState(value);
   const dispatch = useDispatch();
-
+  useEffect(() => {
+    setElement(value);
+  }, [value]);
   const reduceItemNumber = () => {
     if (element.number === 1) {
       return;
