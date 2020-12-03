@@ -7,13 +7,13 @@ import {
   TextStyled,
   StyledCounter,
   IconAwasomeStyled,
+  ButtonSmall,
 } from "./ReservedItem.styled";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   deleteItem,
   updateItem,
 } from "../../containers/app/utils/redux/Action";
-
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 const ReservedItem = ({ value }) => {
@@ -58,9 +58,13 @@ const ReservedItem = ({ value }) => {
       <CardImage alt="Toy Car" src={element.imageSrc} />
       <TextStyled>{element.title}</TextStyled>
       <StyledCounter>
-        <PlusStyled onClick={increaseItemNumber} />
+        <ButtonSmall onClick={increaseItemNumber}>
+          <PlusStyled />
+        </ButtonSmall>
         <TextStyled>{element.number}</TextStyled>
-        <MinusStyled onClick={reduceItemNumber} />
+        <ButtonSmall>
+          <MinusStyled onClick={reduceItemNumber} />
+        </ButtonSmall>
       </StyledCounter>
       <TextStyled>{element.priceInUAH} UAH</TextStyled>
     </CardStyled>

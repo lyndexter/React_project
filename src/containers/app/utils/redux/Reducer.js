@@ -39,7 +39,14 @@ const reducer = (state = {}, action) => {
         totalPrice: calculatePrice(orders),
       };
     case createReserved:
-      orders = createItem(state, action);
+      let foundIndex = state.orders.findIndex(
+        (element) => element.id === action.payload.id
+      );
+      if (foundIndex !== -1) {
+        orders = changeItem(state, action);
+      } else {
+        orders = createItem(state, action);
+      }
       return {
         orders,
         totalPrice: calculatePrice(orders),

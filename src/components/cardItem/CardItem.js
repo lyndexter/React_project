@@ -37,7 +37,7 @@ const AllInfo = ({ toyCar }) => {
   let history = useHistory();
 
   return (
-    <div>
+    <React.Fragment>
       <ButtonStyled onClick={() => setVisible(true)}>Read More</ButtonStyled>
       <MoreInfo height={visible ? 1 : 0}>
         <MetaStyled title={toyCar.title} description={description(toyCar)} />
@@ -56,6 +56,6 @@ const AllInfo = ({ toyCar }) => {
           Show Less
         </ButtonLessStyled>
       </MoreInfo>
-    </div>
+    </React.Fragment>
   );
 };

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { MinusSquareOutlined, PlusSquareOutlined } from "@ant-design/icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Button } from "antd";
 
 export const CardStyled = styled.div`
   display: flex;
@@ -25,7 +26,7 @@ export const TextStyled = styled.p`
   font-size: 24px;
   color: #020243;
   text-align: center;
-  width: 200px;
+
   letter-spacing: 5px;
   margin: 0;
 `;
@@ -61,4 +62,12 @@ export const IconAwasomeStyled = styled(FontAwesomeIcon)`
   top: 5px;
   font-size: 25px;
   color: #020243;
+`;
+
+export const ButtonSmall = styled(Button)`
+  border: none;
+  background-color: transparent;
+  width: 32px;
+  margin: auto 0;
+  padding: 0;
 `;

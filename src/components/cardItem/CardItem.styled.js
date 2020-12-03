@@ -31,10 +31,13 @@ export const ButtonStyled = styled(Button)`
   line-height: inherit;
   color: #fff;
   letter-spacing: 5px;
-  width: 78%;
+  width: 80%;
   height: 36px;
   margin: 0 auto;
-  margin-left: 30px;
+  padding: 0;
+  span {
+    text-align: center;
+  }
   :hover {
     border: 1px solid #020243;
     color: #020243;
@@ -83,4 +86,5 @@ export const MoreInfo = styled.div`
 
 export const ButtonLessStyled = styled(ButtonStyled)`
   margin-bottom: 10px;
+  text-align: center;
 `;
