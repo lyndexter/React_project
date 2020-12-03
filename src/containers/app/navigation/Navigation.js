@@ -17,6 +17,7 @@ import {
   Route,
   NavLink,
 } from "react-router-dom";
+import Checkout from "../cart/checkout/Checkout";
 
 const Navigation = () => {
   return (
@@ -85,6 +86,14 @@ const Navigation = () => {
           <Route path="/news">
             <div>
               news <br /> in this page is info
+            </div>
+          </Route>
+          <Route path="/checkout">
+            <Checkout />
+          </Route>
+          <Route path="/success">
+            <div>
+              news <br /> in this success is info
             </div>
           </Route>
           <Route path="/">

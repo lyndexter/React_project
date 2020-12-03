@@ -17,6 +17,7 @@
     "antd": "^4.8.2",
     "antd-button-color": "^1.0.3",
     "axios": "^0.21.0",
+    "formik": "^2.2.5",
     "isotope-layout": "^3.0.6",
     "react": "^17.0.1",
     "react-absolute-grid": "^3.0.1",
@@ -29,7 +30,8 @@
     "redux": "^4.0.5",
     "styled-components": "^5.2.1",
     "web-vitals": "^0.2.4",
-    "webfontloader": "^1.6.28"
+    "webfontloader": "^1.6.28",
+    "yup": "^0.32.0"
   },
   "scripts": {
     "start": "react-scripts start",

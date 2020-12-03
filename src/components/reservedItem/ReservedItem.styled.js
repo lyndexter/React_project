@@ -26,7 +26,7 @@ export const TextStyled = styled.p`
   font-size: 24px;
   color: #020243;
   text-align: center;
-
+  width: 200px;
   letter-spacing: 5px;
   margin: 0;
 `;
