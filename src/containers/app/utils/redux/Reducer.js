@@ -1,4 +1,9 @@
-import { createReserved, deleteReserved, updateReserved } from "./Hardcode";
+import {
+  createReserved,
+  deleteReserved,
+  resetReserved,
+  updateReserved,
+} from "./Hardcode";
 
 const changeItem = (state, action) => {
   let orders = state.orders.slice();
@@ -56,6 +61,11 @@ const reducer = (state = {}, action) => {
       return {
         orders,
         totalPrice: calculatePrice(orders),
+      };
+    case resetReserved:
+      return {
+        orders: [],
+        totalPrice: 0,
       };
     default:
       return state;

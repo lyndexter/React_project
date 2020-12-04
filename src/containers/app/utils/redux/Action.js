@@ -1,4 +1,9 @@
-import { updateReserved, createReserved, deleteReserved } from "./Hardcode";
+import {
+  updateReserved,
+  createReserved,
+  deleteReserved,
+  resetReserved,
+} from "./Hardcode";
 
 export const startAction = { type: "start", payload: "Hahahah" };
 
@@ -13,3 +18,5 @@ export const createItem = (item) => {
 export const deleteItem = (item) => {
   return { type: deleteReserved, payload: item };
 };
+
+export const resetItems = { type: resetReserved };

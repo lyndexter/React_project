@@ -15,14 +15,19 @@ import {
   updateItem,
 } from "../../containers/app/utils/redux/Action";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { useHistory } from "react-router-dom";
 
 const ReservedItem = ({ value }) => {
   const [element, setElement] = useState(value);
   const dispatch = useDispatch();
+  let history = useHistory();
+
   useEffect(() => {
     setElement(value);
   }, [value]);
-  const reduceItemNumber = () => {
+
+  const reduceItemNumber = (event) => {
+    event.stopPropagation();
     if (element.number === 1) {
       return;
     }
@@ -35,7 +40,8 @@ const ReservedItem = ({ value }) => {
     dispatch(updateItem(newElement));
   };
 
-  const increaseItemNumber = () => {
+  const increaseItemNumber = (event) => {
+    event.stopPropagation();
     if (element.number === 20) {
       return;
     }
@@ -48,12 +54,17 @@ const ReservedItem = ({ value }) => {
     dispatch(updateItem(newElement));
   };
 
-  const removeElement = () => {
+  const removeElement = (event) => {
+    event.stopPropagation();
     dispatch(deleteItem(element));
   };
 
+  const goToItem = () => {
+    history.push(`/item?id=${element.id}`);
+  };
+
   return (
-    <CardStyled>
+    <CardStyled onClick={goToItem}>
       <IconAwasomeStyled onClick={removeElement} icon={faTimes} />
       <CardImage alt="Toy Car" src={element.imageSrc} />
       <TextStyled>{element.title}</TextStyled>

@@ -14,10 +14,6 @@ const Cart = () => {
   let history = useHistory();
   const select = useSelector((state) => state);
 
-  const handleClick = () => {
-    console.log(select);
-  };
-
   return (
     <CartContainer>
       <TitleStyled>Shopping Cart</TitleStyled>

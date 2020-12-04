@@ -13,17 +13,13 @@ import {
 import { Image } from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
-import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import description from "../../containers/app/utils/DescriptionGenerator";
 
 const ImageItem = (props) => {
   const [isShown, setIsShown] = useState(-1);
-  const [redirect, setRedirect] = useState(false);
+  let history = useHistory();
   let toyCar = props.toyCar;
-
-  const goToItem = () => {
-    setRedirect(true);
-  };
 
   return (
     <ImageCard>
@@ -46,8 +42,9 @@ const ImageItem = (props) => {
             <TitleInfo>{toyCar.title}</TitleInfo>
             <InfoDescription>{description(toyCar)}</InfoDescription>
             <InfoPrice>{toyCar.priceInUAH} UAH</InfoPrice>
-            <ButtonStyled onClick={goToItem}>Open In Page</ButtonStyled>
-            {redirect && <Redirect to={`/item?id=${toyCar.id}`} />}
+            <ButtonStyled onClick={() => history.push(`/item?id=${toyCar.id}`)}>
+              Open In Page
+            </ButtonStyled>
           </MainInfo>
           <InfoFooter>
             <FontAwesomeIcon icon={faStar} />
