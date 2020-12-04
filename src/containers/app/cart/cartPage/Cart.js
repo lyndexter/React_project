@@ -28,7 +28,9 @@ const Cart = () => {
       <TotalPriceSyled>Total Price: {select.totalPrice} UAH</TotalPriceSyled>
       <Footer>
         <ButtonOnCart onClick={history.goBack}>Go Back</ButtonOnCart>
-        <ButtonOnCart onClick={handleClick}>Continue</ButtonOnCart>
+        <ButtonOnCart onClick={() => history.push("/checkout")}>
+          Continue
+        </ButtonOnCart>
       </Footer>
     </CartContainer>
   );

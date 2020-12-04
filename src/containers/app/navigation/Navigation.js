@@ -18,6 +18,7 @@ import {
   NavLink,
 } from "react-router-dom";
 import Checkout from "../cart/checkout/Checkout";
+import Success from "../cart/success/Success";
 
 const Navigation = () => {
   return (
@@ -92,9 +93,7 @@ const Navigation = () => {
             <Checkout />
           </Route>
           <Route path="/success">
-            <div>
-              news <br /> in this success is info
-            </div>
+            <Success />
           </Route>
           <Route path="/">
             <Home />

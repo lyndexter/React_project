@@ -1,5 +1,4 @@
 import axios from "axios";
-import { calculateAdditionPrice } from "../catalog/itemView/Utils";
 import { setImages } from "../utils/ProcessData";
 
 const restApi = axios.create({
@@ -13,6 +12,7 @@ export const fetchData = async () => {
     return setImages(responseData.data);
   } catch {
     console.log("error, cant fetch data");
+    return [];
   }
 };
 

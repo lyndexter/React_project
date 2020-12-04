@@ -42,9 +42,7 @@ const Catalog = () => {
           <ContainerItem toys={data} currentView="card" />
         )}
       </ContainerCards>
-      {!isShowMore && (
-        <ButtonStyled onClick={() => showMore()}>Show More</ButtonStyled>
-      )}
+      {!isShowMore && <ButtonStyled onClick={showMore}>Show More</ButtonStyled>}
       {isShowMore && <ButtonStyled onClick={showLess}>Show Less</ButtonStyled>}
     </CatalogContainer>
   );
