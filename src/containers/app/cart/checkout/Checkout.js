@@ -8,7 +8,6 @@ import {
   ButtonContainer,
 } from "./Checkout.styled";
 import { Formik } from "formik";
-
 import InputComponent from "../../../../components/inputComponent/InputComponent";
 import { useHistory } from "react-router-dom";
 import { OrderSchema } from "./ValidationSchema";

@@ -17,6 +17,7 @@ const Catalog = () => {
 
   const [data, setData] = useState(source.slice(0, 2));
   const [isShowMore, setIsShowMore] = useState(false);
+
   const showMore = () => {
     setData(source.slice(0, 4));
     setIsShowMore(true);

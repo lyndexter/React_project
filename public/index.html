@@ -27,7 +27,7 @@
     <title>Toy Car Shop</title>
   </head>
   <body>
-    <script src="http://localhost:8097"></script>
+    <!-- <script src="http://localhost:8097"></script> -->
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!--
@@ -40,5 +40,29 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+    https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyDc5-qp_5vHd4K6G9R8M89tVELN_TejMW8",
+    authDomain: "sensycry.firebaseapp.com",
+    projectId: "sensycry",
+    storageBucket: "sensycry.appspot.com",
+    messagingSenderId: "542948462249",
+    appId: "1:542948462249:web:167cc35dadf3ba82b123b8",
+    measurementId: "G-0GPWLJ2TQF"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
   </body>
 </html>

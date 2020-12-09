@@ -19,11 +19,17 @@ import {
 } from "react-router-dom";
 import Checkout from "../cart/checkout/Checkout";
 import Success from "../cart/success/Success";
+import Login from "../entrance/login/Login";
+import Register from "../entrance/register/Register";
+import Header from "../header/Header";
+import ProtectedRoute from "./ProtectedRoute";
+import Heading from "../home/heading/Heading";
 
 const Navigation = () => {
   return (
     <ContainerStyled>
       <Router>
+        <Header />
         <MenuStyled>
           <LogoImage src={logo} />
 
@@ -65,39 +71,48 @@ const Navigation = () => {
           ></NavLink>
         </MenuStyled>
         <Switch>
-          <Route path="/catalog">
-            <Catalog />
+          <ProtectedRoute component={<Catalog />} path={"/catalog"} />
+          <ProtectedRoute component={<Cart />} path={"/cart"} />
+          <ProtectedRoute component={<Item />} path={"/item"} />
+
+          <ProtectedRoute
+            component={
+              <div>
+                contact us <br /> in this page is info how to contact with us
+              </div>
+            }
+            path={"/contact"}
+          />
+          <ProtectedRoute
+            component={
+              <div>
+                about us <br /> in this page is info about us
+              </div>
+            }
+            path={"/about"}
+          />
+          <ProtectedRoute
+            component={
+              <div>
+                news <br /> in this page is info
+              </div>
+            }
+            path={"/news"}
+          />
+          <ProtectedRoute component={<Checkout />} path={"/checkout"} />
+          <ProtectedRoute component={<Success />} path={"/success"} />
+          <Route path="/register">
+            <Register />
           </Route>
-          <Route path="/cart">
-            <Cart />
+          <Route path="/login">
+            <Login />
           </Route>
-          <Route path="/item">
-            <Item />
-          </Route>
-          <Route path="/contact">
-            <div>
-              contact us <br /> in this page is info how to contact with us
-            </div>
-          </Route>
-          <Route path="/about">
-            <div>
-              about us <br /> in this page is info about us
-            </div>
-          </Route>
-          <Route path="/news">
-            <div>
-              news <br /> in this page is info
-            </div>
-          </Route>
-          <Route path="/checkout">
-            <Checkout />
-          </Route>
-          <Route path="/success">
-            <Success />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
+          <ProtectedRoute
+            component={<Home />}
+            path={"/"}
+            exact
+            redirect={<Heading />}
+          />
         </Switch>
         <Footer />
       </Router>

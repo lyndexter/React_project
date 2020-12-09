@@ -34,6 +34,8 @@ export const setImages = (initialData) => {
       case 8:
         item.imageSrc = car8;
         break;
+      default:
+        item.imageSrc = null;
     }
   });
   return initialData;

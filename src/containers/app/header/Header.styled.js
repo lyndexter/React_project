@@ -1,4 +1,5 @@
-import styled, { createGlobalStyle } from "styled-components";
+import styled from "styled-components";
+import { ButtonStyled } from "../../../components/cardItem/CardItem.styled";
 
 export const StyledHeader = styled.section`
   margin: 0 auto;
@@ -64,4 +65,20 @@ export const AuthorisationDelimater = styled.div`
   height: 15px;
   width: 1px;
   margin-right: 5px;
+`;
+
+export const ButtonLogOut = styled.button`
+  display: inline;
+  font-family: "BebasNeue Regular";
+  margin-left: 33%;
+  color: #e7e7e7;
+  background-color: transparent;
+  border: none;
+  :hover {
+    color: #c59e47;
+    border: none;
+  }
+  :active {
+    border: none;
+  }
 `;

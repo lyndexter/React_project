@@ -31,13 +31,6 @@ export const InputContainer = styled.div`
   font-family: "OpenSans-Light";
 `;
 
-export const InputComponent = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  position: relative;
-`;
-
 export const ButtonContainer = styled.div`
   display: flex;
   width: 1200px;

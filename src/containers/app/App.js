@@ -20,7 +20,6 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
       <ElementsContext.Provider value={{ source, setSource }}>
         <Provider store={store}>
           <Navigation />

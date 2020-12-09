@@ -43,7 +43,6 @@ export const LogoImage = styled.img`
   display: inline;
   width: 100px;
   z-index: 3;
-  /* background-color: black; */
 `;
 
 export const ContainerStyled = styled.section``;

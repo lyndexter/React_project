@@ -31,13 +31,14 @@ const CatalogNews = () => {
         if (a.material > b.material) return 1;
         else if (a.material < b.material) return -1;
         else return 0;
+      default:
+        return 0;
     }
   };
 
   const sortBy = (standard) => {
     let result = [...toys].sort((a, b) => comparator(a, b, standard));
     setToys(result);
-    console.log(toys);
   };
 
   return (
