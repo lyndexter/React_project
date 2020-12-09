@@ -13,9 +13,30 @@ import {
   AuthorizationStyled,
   AuthorisationText,
   AuthorisationDelimater,
+  ButtonLogOut,
 } from "./Header.styled";
+import { useHistory } from "react-router-dom";
 
 const Header = () => {
+  let history = useHistory();
+  let isAuth = false;
+  const username = localStorage.getItem("username");
+  const password = localStorage.getItem("password");
+  if (username != null && password != null) {
+    isAuth = true;
+  }
+
+  const goToResource = (name) => {
+    history.push(`/${name}`);
+  };
+
+  const logout = () => {
+    localStorage.removeItem("username");
+    localStorage.removeItem("password");
+    history.push("/login");
+    history.go(0);
+  };
+
   return (
     <StyledHeader>
       <ListStyled>
@@ -33,16 +54,19 @@ const Header = () => {
         </a>
       </ListStyled>
       <TelephoNumber>Give us a call : +6666666666</TelephoNumber>
-
-      <AuthorizationStyled>
-        <AuthorisationText>
-          <a href="#">LOGIN</a>
-        </AuthorisationText>
-        <AuthorisationDelimater />
-        <AuthorisationText>
-          <a href="#">REGISTER</a>
-        </AuthorisationText>
-      </AuthorizationStyled>
+      {isAuth ? (
+        <ButtonLogOut onClick={logout}>Log out</ButtonLogOut>
+      ) : (
+        <AuthorizationStyled>
+          <AuthorisationText>
+            <a onClick={() => goToResource("login")}>LOGIN</a>
+          </AuthorisationText>
+          <AuthorisationDelimater />
+          <AuthorisationText>
+            <a onClick={() => goToResource("register")}>REGISTER</a>
+          </AuthorisationText>
+        </AuthorizationStyled>
+      )}
     </StyledHeader>
   );
 };

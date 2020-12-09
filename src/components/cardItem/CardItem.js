@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Footer,
   CardStyled,
@@ -9,16 +9,20 @@ import {
   MoreInfo,
   ButtonLessStyled,
 } from "./CardItem.styled";
-import "antd/dist/antd.css";
+import { useHistory } from "react-router-dom";
+import description from "../../containers/app/utils/DescriptionGenerator";
 
-const CardItem = ({ title, description, imageSrc, price }) => {
+const CardItem = ({ toyCar }) => {
   return (
     <div>
-      <CardStyled hoverable cover={<CardImage alt="Toy Car" src={imageSrc} />}>
+      <CardStyled
+        hoverable
+        cover={<CardImage alt="Toy Car" src={toyCar.imageSrc} />}
+      >
         <Footer>
-          <MetaStyled title={title} description={description} />
-          <TextStyled>Price: ${price}UAH</TextStyled>
-          <Info title={title} description={description} />
+          <MetaStyled title={toyCar.title} description={toyCar.description} />
+          <TextStyled>Price: {toyCar.priceInUAH} UAH</TextStyled>
+          <AllInfo toyCar={toyCar} />
         </Footer>
       </CardStyled>
     </div>
@@ -27,39 +31,31 @@ const CardItem = ({ title, description, imageSrc, price }) => {
 
 export default CardItem;
 
-class Info extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      visible: false,
-      title: props.title,
-      description: props.description,
-    };
-  }
-  showDrawer = () => {
-    this.setState({
-      visible: true,
-    });
-  };
+const AllInfo = ({ toyCar }) => {
+  const [visible, setVisible] = useState(false);
 
-  onClose = () => {
-    this.setState({
-      visible: false,
-    });
-  };
+  let history = useHistory();
 
-  render() {
-    return (
-      <div>
-        <ButtonStyled onClick={this.showDrawer}>Read More</ButtonStyled>
-        <MoreInfo height={this.state.visible}>
-          <MetaStyled
-            title={this.state.title}
-            description={this.state.description}
-          />
-          <ButtonLessStyled onClick={this.onClose}>Show Less</ButtonLessStyled>
-        </MoreInfo>
-      </div>
-    );
-  }
-}
+  return (
+    <React.Fragment>
+      <ButtonStyled onClick={() => setVisible(true)}>Read More</ButtonStyled>
+      <MoreInfo height={visible ? 1 : 0}>
+        <MetaStyled title={toyCar.title} description={description(toyCar)} />
+        <ButtonStyled
+          onClick={() => {
+            history.push(`/item?id=${toyCar.id}`);
+          }}
+        >
+          Open In Page
+        </ButtonStyled>
+        <ButtonLessStyled
+          onClick={() => {
+            setVisible(false);
+          }}
+        >
+          Show Less
+        </ButtonLessStyled>
+      </MoreInfo>
+    </React.Fragment>
+  );
+};

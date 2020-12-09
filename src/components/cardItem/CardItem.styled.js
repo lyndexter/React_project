@@ -18,6 +18,7 @@ export const CardStyled = styled(Card)`
   width: 680px;
   height: 400px;
   display: flex;
+  margin-bottom: 5%;
 `;
 
 export const ButtonStyled = styled(Button)`
@@ -30,10 +31,17 @@ export const ButtonStyled = styled(Button)`
   line-height: inherit;
   color: #fff;
   letter-spacing: 5px;
-  width: 74%;
+  width: 80%;
   height: 36px;
   margin: 0 auto;
-  margin-left: 30px;
+  padding: 0;
+  span {
+    text-align: center;
+  }
+  :hover {
+    border: 1px solid #020243;
+    color: #020243;
+  }
 `;
 
 export const CardImage = styled.img`
@@ -73,9 +81,10 @@ export const MoreInfo = styled.div`
   margin-top: 30px;
   height: ${(props) => (props.height ? "322px" : "0px")};
   max-width: 290px;
-  transition: 0.3s;
+  transition: 0.6s;
 `;
 
 export const ButtonLessStyled = styled(ButtonStyled)`
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  text-align: center;
 `;
