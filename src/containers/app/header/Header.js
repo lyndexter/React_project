@@ -31,7 +31,8 @@ const Header = () => {
   };
 
   const logout = () => {
-    localStorage.clear();
+    localStorage.removeItem("username");
+    localStorage.removeItem("password");
     history.push("/login");
     history.go(0);
   };

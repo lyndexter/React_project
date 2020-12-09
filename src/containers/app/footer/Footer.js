@@ -33,19 +33,19 @@ const Footer = () => {
       <LogoStyled src={logo} />
       <ContactContainer>
         <ContactText>
-          <a onClick={() => goToResource("about")}>about us</a>
+          <button onClick={() => goToResource("about")}>about us</button>
         </ContactText>
         <ContactText>
-          <a onClick={() => goToResource("catalog")}>catalog</a>
+          <button onClick={() => goToResource("catalog")}>catalog</button>
         </ContactText>
         <ContactText>
           <a href="#">Preorder</a>
         </ContactText>
         <ContactText>
-          <a onClick={() => goToResource("contact")}>contact us</a>
+          <button onClick={() => goToResource("contact")}>contact us</button>
         </ContactText>
         <ContactText>
-          <a onClick={() => goToResource("news")}>recieve our news</a>
+          <button onClick={() => goToResource("news")}>recieve our news</button>
         </ContactText>
       </ContactContainer>
       <BrandStuff>

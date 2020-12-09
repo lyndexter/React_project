@@ -31,6 +31,24 @@ export const ContactText = styled.li`
   text-transform: uppercase;
   list-style: none;
   padding: 0px;
+
+  button {
+    font-family: "OpenSans Regular";
+    text-transform: uppercase;
+    line-height: 0;
+    color: #191919;
+    font-size: 17px;
+    background-color: transparent;
+    border: none;
+    padding: 0px;
+    :hover {
+      color: #333;
+      text-shadow: #595959 4px 0 10px;
+    }
+    :focus {
+      outline: none;
+    }
+  }
   a {
     color: #191919;
     :hover {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   ButtonAuth,
   ContainerStyled,
@@ -11,7 +11,7 @@ import { Formik } from "formik";
 import { LoginSchema } from "../utils/ValidationSchema";
 import InputComponent from "../../../../components/inputComponent/InputComponent";
 import { useHistory } from "react-router-dom";
-
+import { Modal } from "antd";
 const Login = () => {
   let history = useHistory();
 
@@ -20,11 +20,27 @@ const Login = () => {
   };
 
   const submitForm = (values) => {
-    for (let value in values) {
-      localStorage.setItem(value, values[value]);
+    const user = {
+      username: localStorage.getItem("username-register", values["username"]),
+      email: localStorage.getItem("email-register", values["email"]),
+      password: localStorage.getItem("password-register", values["password"]),
+    };
+
+    if (
+      (user.username === values["username"] ||
+        user.email === values["email"]) &&
+      user.password === values["password"]
+    ) {
+      localStorage.setItem("username", values["username"]);
+      localStorage.setItem("password", values["password"]);
+      history.push("/");
+      history.go(0);
+    } else {
+      Modal.error({
+        title: "Your username or password is invalid",
+        content: "please try again or register if you not register now",
+      });
     }
-    history.push("/");
-    history.go(0);
   };
 
   return (
@@ -45,7 +61,12 @@ const Login = () => {
               name="username"
               type="text"
             />
-            <InputComponent title="Password" name="password" type="password" />
+            <InputComponent
+              title="Password"
+              name="password"
+              type="password"
+              autocomplete="current-password"
+            />
             <TextStyled>
               Not a member?{" "}
               <SpanStyled onClick={goToSignUp}>Sign Up</SpanStyled>

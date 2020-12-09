@@ -21,9 +21,12 @@ const Register = () => {
 
   const submitForm = (values) => {
     localStorage.setItem("username", values["username"]);
-    localStorage.setItem("email", values["email"]);
     localStorage.setItem("password", values["password"]);
+    localStorage.setItem("username-register", values["username"]);
+    localStorage.setItem("email-register", values["email"]);
+    localStorage.setItem("password-register", values["password"]);
     history.push("/");
+    history.go(0);
   };
 
   return (
